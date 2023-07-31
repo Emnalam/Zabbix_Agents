@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<currentaccountingdateresult>
+    <agent_Version>1.1.8.2</agent_Version>
+    <agent_Host>vm-psrhel01</agent_Host>
+    <environment>cs406p2</environment>
+    <product>apsys</product>
+    <agentExecutionDate>2020-04-06_17_39_24_931</agentExecutionDate>
+    <ap_Base>cs406p2</ap_Base>
+    <isBatchAborted>false</isBatchAborted>
+    <isCheckOk>true</isCheckOk>
+    <accountingDate>20200406</accountingDate>
+</currentaccountingdateresult>

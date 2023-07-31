@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<client name="bendura" environment="production">
+    <morning>
+        <configuration>
+            <products>
+                <product name="apsys" environment="dbprod">
+                    <check tagname="checkbatchlogresult" />
+                    <check tagname="checkcurrenciesupdatedresult" />
+                    <check tagname="checkprogramabortresult" />
+                    <check tagname="checksavesbackup" />
+                    <check tagname="checksecuritiesratesresult" />
+                    <check tagname="checktransactionabortresult" />
+                    <check tagname="currentaccountingdateresult" />
+                    <check tagname="databaseoperationalstatusresult" />
+                    <check tagname="runconfigurationresult" />
+                </product>
+                <product name="apsys" environment="dbtest6">
+                    <check tagname="databaseoperationalstatusresult" />
+                </product>
+            </products>
+        </configuration>
+    </morning>
+</client>

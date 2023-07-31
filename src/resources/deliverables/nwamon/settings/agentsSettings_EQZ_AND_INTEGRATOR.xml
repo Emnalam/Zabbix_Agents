@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	environment="bendura.prod.naeqbackp01"
+	useScheduler="true" 
+	defaultFrequenceMilliseconds="10000" 
+	logToFile="true" 
+	logToConsole="false" 
+	logFile="log/agents.log" 
+	logLevel="trace" 
+	logFileCount="1" 
+	logFileSizeInBytes="10000000" 
+	dateFormat="yyyy-MM-dd_HH_mm_ss_SSS" 
+	transferBin="bin"
+	useTransfer="true" 
+	transferServer="" 
+	transferLogin="" 
+	transferPassword="" 
+	transferPort=""
+	transferConcurrentRequests="10">
+  <workers>
+	<workerInfos name="Integrator Check Data Eqz and Apsys" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.common.SqlQueryMonitorWorker</classname>
+      <command>
+					declare @tolerance float;
+set @tolerance = 1;
+
+with postable1 as ( select [ZPOIDE]
+				  ,[ZPTNVA]
+				  ,[ZAVPOS]
+				  ,[IAVDVO]
+				  ,[IAVAPF]
+				  ,[IPLOTA]
+
+from
+
+( 
+	SELECT 
+				  [ZPOIDE]
+				  ,[ZPTNVA]
+				  ,[ZAVPOS]
+				  ,[IAVDVO]
+				  ,[IAVAPF]
+				  ,[IPLOTA]
+
+			  FROM [EQZ_POS_PERFMATCH] 
+
+			except
+
+			  SELECT 
+				  [ZPOIDE]
+				  ,[ZPTNVA]
+				  ,[ZAVPOS]
+				  ,[IAVDVO]
+				  ,[IAVAPF]
+				  ,[IPLOTA]
+
+			  FROM [EQZ_POS_APSYS]
+) d1
+) ,
+
+postable2 as (select [ZPOIDE]
+				  ,[ZPTNVA]
+				  ,[ZAVPOS]
+				  ,[IAVDVO]
+				  ,[IAVAPF]
+				  ,[IPLOTA]
+
+from
+
+( 
+	SELECT 
+				  [ZPOIDE]
+				  ,[ZPTNVA]
+				  ,[ZAVPOS]
+				  ,[IAVDVO]
+				  ,[IAVAPF]
+				  ,[IPLOTA]
+
+			  FROM [EQZ_POS_APSYS]
+
+			except
+
+			  SELECT 
+				  [ZPOIDE]
+				  ,[ZPTNVA]
+				  ,[ZAVPOS]
+				  ,[IAVDVO]
+				  ,[IAVAPF]
+				  ,[IPLOTA]
+
+			  FROM [EQZ_POS_PERFMATCH] 
+) d2
+) ,
+
+ptftable1 as ( select [ZCLIDE]
+				  ,[ZPOIDE]
+				  ,[IPRFAM]
+				  ,[IDATE] 
+from
+
+( 
+	SELECT [ZCLIDE]
+				  ,[ZPOIDE]
+				  ,[IPRFAM]
+				  ,[IDATE]
+			  FROM [EQZ_PTF_APSYS] where IPRFAM &gt; 0
+
+			except
+
+			  SELECT [ZCLIDE]
+				  ,[ZPOIDE]
+				  ,[IPRFAM]
+				  ,[IDATE]
+			  FROM [EQZ_PTF_PERFMATCH] where IPRFAM &gt; 0
+) d1
+) ,
+
+ptftable2 as (select [ZCLIDE]
+				  ,[ZPOIDE]
+				  ,[IPRFAM]
+				  ,[IDATE] 
+from
+
+( 
+	SELECT [ZCLIDE]
+				  ,[ZPOIDE]
+				  ,[IPRFAM]
+				  ,[IDATE]
+			  FROM [EQZ_PTF_PERFMATCH] where IPRFAM &gt; 0
+
+			except
+
+			  SELECT [ZCLIDE]
+				  ,[ZPOIDE]
+				  ,[IPRFAM]
+				  ,[IDATE]
+			  FROM [EQZ_PTF_APSYS] where IPRFAM &gt; 0
+) d2
+) 
+
+select 'ptf' as Category, case when 
+			(select count(*) from [EQZ_PTF_APSYS] where IPRFAM &gt; 0 and ZPOIDE &lt;&gt; '107000000') = (select count(*) from [EQZ_PTF_PERFMATCH] where IPRFAM &gt; 0) then 'ok' else 'nok' end as CountDiff,
+			(select count(*) from
+			(
+				
+				select t1.ZCLIDE from ptftable1 t1 
+				inner join ptftable2 t2 on t1.ZCLIDE = t2.ZCLIDE and t1.ZPOIDE = t2.ZPOIDE
+				where ABS(t1.IPRFAM - t2.IPRFAM) &gt; @tolerance ) d) as DataDiff
+
+			  union all
+
+select 'pos' as Category, case when 
+			(select count(*) from [EQZ_POS_PERFMATCH]) = (select count(*) from [EQZ_POS_APSYS] ) then 'ok' else 'nok' end as CountDiff,
+			(select count(*) from
+			(
+			select t1.ZPOIDE from postable1 t1 
+			inner join postable2 t2 on t1.ZPOIDE = t2.ZPOIDE and t1.ZPTNVA = t2.ZPTNVA and t1.ZAVPOS = t2.ZAVPOS
+			where 
+					t1.zptnva &lt;&gt; '46208490200000' and 
+					(
+					ABS(t1.[IPLOTA] - t2.[IPLOTA]) > @tolerance OR
+					ABS(t1.[IAVAPF] - t2.[IAVAPF]) > @tolerance OR
+					ABS(t1.[IAVDVO] - t2.[IAVDVO]) > @tolerance )) d)  as DataDiff
+	  </command>
+	  <product>integrator</product>
+	  <subproduct>checkdata</subproduct>
+      <additionalParameters>jdbcdriver|com.microsoft.sqlserver.jdbc.SQLServerDriver||jdbcurl|jdbc:sqlserver://nasqlp01.hypo.local:1433;;databaseName=Import_SIT;integratedsecurity=true</additionalParameters>
+      <outputfile>output/CheckDataEqzApsys.xml</outputfile>
+      <scheduling enabled="true">
+        <days>
+		  <day name="Monday" time="07:00" />
+          <day name="Tuesday" time="07:00" />
+		  <day name="Wednesday" time="07:00" />
+		  <day name="Thursday" time="07:00" />
+		  <day name="Friday" time="07:00" />
+		  <day name="Saturday" time="07:00" />
+		  <day name="Sunday" time="07:00" />
+        </days>
+      </scheduling>
+    </workerInfos>
+	<workerInfos name="Oracle Backups" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.common.SqlQueryToTextWorker</classname>
+      <command>
+		select 
+	  (select instance_name from v$instance) as name,
+	  operation,
+       status,
+       object_type,
+       To_Char(start_time,'dd.mm.yyyy:hh24:mi:ss') AS start_time,
+	  To_Char(end_time,'dd.mm.yyyy:hh24:mi:ss') AS end_time,
+	  case 
+			   when start_time is null then 'NOK'
+			   when start_time &lt; sysdate-1 then 'NOK' 
+			   else 'OK' end as nwamon_status
+from v$rman_status
+WHERE start_time >  sysdate -1
+and operation= 'BACKUP'
+and object_type = 'DB FULL'
+order by start_time desc	
+fetch first 1 row only	   		
+		
+	  </command>
+	  <product>sql</product>
+	  <subproduct>oracle_apsys_backups</subproduct>
+      <additionalParameters>jdbcdriver|oracle.jdbc.driver.OracleDriver||jdbcurl|jdbc:oracle:thin:support/support@apsprod:1521:dbprod</additionalParameters>
+      <outputfile>output/OracleApsysBackups.xml</outputfile>
+      <scheduling enabled="true">
+        <periodic frequence="600000" />
+      </scheduling>
+    </workerInfos>
+	<workerInfos name="Oracle Files" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.common.SqlQueryToTextWorker</classname>
+      <command>
+		select 
+			df.tablespace_name "TABLESPACE",
+			TotalAvailable "MAXSPACE",
+			ActualAvailable "ACTUALAVAILABLE",
+			totalusedspace "USED",
+			(df.TotalAvailable - tu.totalusedspace) "FREE",
+			round(100 * ( (tu.totalusedspace)/ df.TotalAvailable))||'%' "PCTUSED",
+			case 
+			when round(100 * ( (tu.totalusedspace)/ df.TotalAvailable)) >= 70 then 'NOK'
+			else 'OK'  end as nwamon_status
+		from
+		(
+			select 
+				tablespace_name,
+				round(sum(maxbytes) / 1048576) TotalAvailable,
+				round(sum(bytes) / 1048576) ActualAvailable
+			from dba_data_files
+			group by tablespace_name) df,
+			(
+				select 
+					round(sum(bytes)/(1024*1024)) totalusedspace, tablespace_name
+				from dba_segments
+				group by tablespace_name) tu
+		where df.tablespace_name = tu.tablespace_name
+		ORDER BY  df.tablespace_name
+	  </command>
+	  <product>sql</product>
+	  <subproduct>oracle_apsys_logs</subproduct>
+      <additionalParameters>jdbcdriver|oracle.jdbc.driver.OracleDriver||jdbcurl|jdbc:oracle:thin:support/support@apsprod:1521:dbprod</additionalParameters>
+      <outputfile>output/OracleApsysLogs.xml</outputfile>
+      <scheduling enabled="true">
+        <periodic frequence="600000" />
+      </scheduling>
+    </workerInfos>
+
+	<workerInfos name="Intraday REQZRUN Checks" disableTransfer="false">
+      <classname>workers.common.SqlQueryMonitorWorker</classname>
+	  <product>integrator</product>
+	  <subproduct>intraday</subproduct>
+      <command>
+		select 
+		(select case when cdetatc &lt;&gt; 'A' then 'nok' else 'ok' end from reqzrun where cdtypc = 'E') check1 ,
+		(select case when cdetatc = 'T' or cdetatc = 'D' then 'nok' else 'ok' end from reqzrun where cdtypc = 'I') check2,
+		(select case when TO_NUMBER(TO_CHAR(CURRENT_DATE, 'YYYYMMDD')) &lt;&gt; dttrtl then 'nok' else 'ok' end from reqzrun where cdtypc = 'I') check3,
+		(select case when cdetatc = 'S' and hrtrtl &lt; TO_NUMBER(TO_CHAR(SYSDATE - 15/1440, 'hh24miss')) then 'nok' else 'ok' end from reqzrun where cdtypc = 'I') check4	
+		from dual where TO_CHAR(SYSDATE, 'hh24') between 7 and 19
+	  </command>
+      <additionalParameters>jdbcdriver|oracle.jdbc.driver.OracleDriver||jdbcurl|jdbc:oracle:thin:support/support@apsprod:1521:dbprod</additionalParameters>
+      <outputfile>output/eqz_IntradayLogResult.xml</outputfile>
+      <scheduling enabled="true">
+        <periodic frequence="10000" />
+      </scheduling>
+    </workerInfos>
+	<workerInfos name="CommonsLog Integrator Monitor" disableTransfer="false">
+      <classname>workers.integrator.IntegratorCommonsLogMonitorWorker</classname>
+      <command />
+      <additionalParameters>jdbcdriver|com.microsoft.sqlserver.jdbc.SQLServerDriver||jdbcurl|jdbc:sqlserver://nasqlp01.hypo.local:1433;;databaseName=Member_SIT;integratedsecurity=true</additionalParameters>
+      <outputfile>output/eqz_CommonsLogResult_{date}.xml</outputfile>
+      <scheduling enabled="true">
+        <periodic frequence="10000" />
+      </scheduling>
+    </workerInfos>
+	<workerInfos name="Equalizer new day checker" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.equalizer.EqualizerNewDayCheckerWorker</classname>
+      <command />
+      <additionalParameters>equalizerpath=C:\Equalizer\Equalizer;dbConnection=jdbcdriver|oracle.jdbc.driver.OracleDriver||jdbcurl|jdbc:oracle:thin:support/support@apsprod:1521:dbprod</additionalParameters>
+      <outputfile>output/eqz_NewDayCheckerResult.xml</outputfile>
+      <scheduling enabled="true">
+        <days>
+		  <day name="Monday" time="07:00" />
+          <day name="Tuesday" time="07:00" />
+		  <day name="Wednesday" time="07:00" />
+		  <day name="Thursday" time="07:00" />
+		  <day name="Friday" time="07:00" />
+		  <day name="Saturday" time="07:00" />
+		  <day name="Sunday" time="07:00" />
+        </days>
+      </scheduling>
+    </workerInfos>
+	<workerInfos name="Equalizer EqIS log file monitor" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.equalizer.EqIsLogFileMonitorWorker</classname>
+      <command></command>
+      <additionalParameters>directories=C:\Equalizer\Equalizer\Audit\Web;filepattern=EqIS*.log</additionalParameters>
+      <outputfile>output/EqIsLogFileMonitorResult_{date}.xml</outputfile>
+      <scheduling enabled="true">
+      </scheduling>
+    </workerInfos>
+   <workerInfos name="Equalizer EqPS log file monitor" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.equalizer.EqPsLogFileMonitorWorker</classname>
+      <command></command>
+      <additionalParameters>directories=C:\Equalizer\Equalizer\Audit\Web;filepattern=EqPS*.log</additionalParameters>
+      <outputfile>output/EqPsLogFileMonitorResult_{date}.xml</outputfile>
+      <scheduling enabled="true">
+      </scheduling>
+    </workerInfos>
+	<workerInfos name="Equalizer EqXor log file monitor" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.equalizer.EqXorLogFileMonitorWorker</classname>
+      <command></command>
+      <additionalParameters>directories=C:\Equalizer\Equalizer\Audit\OrderTransport</additionalParameters>
+      <outputfile>output/EqXorLogFileMonitorResult_{date}.xml</outputfile>
+      <scheduling enabled="true">
+      </scheduling>
+    </workerInfos>
+	<workerInfos name="Equalizer EqWS log file monitor" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.equalizer.EqWsLogFileMonitorWorker</classname>
+      <command></command>
+      <additionalParameters>directories=C:\Equalizer\Equalizer\Audit\EqWS</additionalParameters>
+      <outputfile>output/EqWSLogFileMonitorResult_{date}.xml</outputfile>
+      <scheduling enabled="true">
+      </scheduling>
+    </workerInfos>
+    <workerInfos name="Equalizer integrity checker" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.equalizer.EqualizerIntegrityCheckerWorker</classname>
+      <command>eqconv.exe /password=enc(96DA642F2AF2635B) /check_assets /fullkey /from=${lastday} /to=${lastday} /query=std.CheckInt 2&gt;&amp;1
+			   eqconv.exe /password=enc(96DA642F2AF2635B) /check_cash /fullkey /from=${lastday} /to=${lastday} /query=std.CheckInt 2&gt;&amp;1
+	  </command>
+      <additionalParameters>equalizerpath=C:\Equalizer\Equalizer</additionalParameters>
+      <outputfile>output/EqualizerIntegrityCheckerResult.xml</outputfile>
+      <scheduling enabled="true">
+         <days>
+		  <day name="Monday" time="07:00" />
+          <day name="Tuesday" time="07:00" />
+		  <day name="Wednesday" time="07:00" />
+		  <day name="Thursday" time="07:00" />
+		  <day name="Friday" time="07:00" />
+		  <day name="Saturday" time="07:00" />
+		  <day name="Sunday" time="07:00" />
+        </days>
+      </scheduling>
+    </workerInfos>
+	<workerInfos name="Equalizer Services Monitor" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.common.ServicesMonitorWorker</classname>
+      <command>wmic service where started=true get name</command>
+	  <product>eqz</product>
+      <additionalParameters>processes=EqIS_1,EqIS_2,EqIS_3,EqIS_4,EqXOR,EqXORAck,EqWS, Tomcat8</additionalParameters>
+      <outputfile>output/ServicesMonitorResult_eqz.xml</outputfile>
+      <scheduling enabled="true">
+        <periodic frequence="5000" />
+      </scheduling>
+    </workerInfos>
+	<workerInfos name="Integrator Services Monitor" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.common.ServicesMonitorWorker</classname>
+      <command>wmic service where started=true get name</command>
+	  <product>integrator</product>
+      <additionalParameters>processes=NWA_CommonLog, NWA_IntradayService, NWA_Synchronization, ActiveMQ</additionalParameters>
+      <outputfile>output/ServicesMonitorResult_integrator.xml</outputfile>
+      <scheduling enabled="true">
+        <periodic frequence="5000" />
+      </scheduling>
+    </workerInfos>
+
+	<workerInfos name="Windows Resource Check" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+	  <product>eqz</product>
+      <classname>workers.common.ResourcesMonitorWorker</classname>
+      <command>bin\tools\Resources.exe</command>
+      <outputfile>output/ResourcesMonitorResult_eqz.xml</outputfile>
+      <scheduling enabled="true">
+      </scheduling>
+    </workerInfos>
+	<workerInfos name="Windows Resource Check" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+	  <product>integrator</product>
+      <classname>workers.common.ResourcesMonitorWorker</classname>
+      <command>bin\tools\Resources.exe</command>
+      <outputfile>output/ResourcesMonitorResult_integrator.xml</outputfile>
+      <scheduling enabled="true">
+      </scheduling>
+    </workerInfos>
+    <workerInfos name="Eqz WebApi" disableTransfer="false">
+      <scheduling enabled="true">
+        <periodic frequence="10000" />
+      </scheduling>
+      <classname>workers.equalizer.EQZwebapi</classname>
+      <command> powershell -noexit -File C:\scripts\equiZData.ps1 http://chgbcfrefnwa:8010/EQZ_WebApi_Front/services/EqualizerData?wsdl std welcome 120 True</command>
+      <successExitCode>0</successExitCode>
+      <outputfile>output/client_eqz_EqzWebApiWorker.xml</outputfile>
+    </workerInfos>
+  </workers>
+</settings>

@@ -1,0 +1,30 @@
+(T     1) 20-02-2020 07:00:40.520 (I) ctadisp.c   (  96) ctadisp - Env is CTA - Activation time is 70040
+(T     1) 20-02-2020 07:00:40.521 (I) ctacta.c    (  77) ctacta - Acknowledged slip CTA 20200220 1 055556
+(T     1) 20-02-2020 07:00:40.522 (I) ap_cet.c    ( 673) cet_ctaext - Acknowledged slip CTA 20200219 1 055538 to be reversed
+(T     1) 20-02-2020 07:00:40.743 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 810002000 100 CHF 0 with nuecrs 00002201 (origin 20200219_1_055538_16)
+(T     1) 20-02-2020 07:00:40.743 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 810002000 100 USD 0 with nuecrs 00001493 (origin 20200219_1_055538_18)
+(T     1) 20-02-2020 07:00:40.743 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 810002000 100 EUR 0 with nuecrs 00002813 (origin 20200219_1_055538_20)
+(T     1) 20-02-2020 07:00:40.743 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 810003000 100 CHF 0 with nuecrs 00003379 (origin 20200219_1_055538_22)
+(T     1) 20-02-2020 07:00:40.743 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 810003000 100 EUR 0 with nuecrs 00002676 (origin 20200219_1_055538_24)
+(T     1) 20-02-2020 07:00:40.743 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 810041100 100 EUR 0 with nuecrs 00003755 (origin 20200219_1_055538_10)
+(T     1) 20-02-2020 07:00:40.743 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 810041100 100 EUR 0 with nuecrs 00003756 (origin 20200219_1_055538_12)
+(T     1) 20-02-2020 07:00:40.744 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 827003000 100 GBP 0 with nuecrs 00001443 (origin 20200219_1_055538_8)
+(T     1) 20-02-2020 07:00:40.744 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 827031100 100 EUR 0 with nuecrs 00002135 (origin 20200219_1_055538_14)
+(T     1) 20-02-2020 07:00:40.744 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 840011000 080 CHF 0 with nuecrs 00004110 (origin 20200219_1_055538_15)
+(T     1) 20-02-2020 07:00:40.744 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 840011000 080 USD 0 with nuecrs 00002964 (origin 20200219_1_055538_17)
+(T     1) 20-02-2020 07:00:40.744 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 840011000 080 EUR 0 with nuecrs 00003180 (origin 20200219_1_055538_19)
+(T     1) 20-02-2020 07:00:40.744 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 840111000 080 CHF 0 with nuecrs 00005307 (origin 20200219_1_055538_21)
+(T     1) 20-02-2020 07:00:40.744 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 840111000 080 EUR 0 with nuecrs 00004002 (origin 20200219_1_055538_23)
+(T     1) 20-02-2020 07:00:40.744 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 840111000 100 AUD 0 with nuecrs 00003115 (origin 20200219_1_055538_2)
+(T     1) 20-02-2020 07:00:40.744 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 840111000 100 CHF 0 with nuecrs 00009163 (origin 20200219_1_055538_4)
+(T     1) 20-02-2020 07:00:40.745 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 840111000 100 EUR 0 with nuecrs 00004529 (origin 20200219_1_055538_6)
+(T     1) 20-02-2020 07:00:40.745 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 840201000 080 AUD 0 with nuecrs 00003113 (origin 20200219_1_055538_1)
+(T     1) 20-02-2020 07:00:40.745 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 840201000 080 CHF 0 with nuecrs 00007250 (origin 20200219_1_055538_3)
+(T     1) 20-02-2020 07:00:40.745 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 840201000 080 EUR 0 with nuecrs 00003620 (origin 20200219_1_055538_5)
+(T     1) 20-02-2020 07:00:40.745 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 840303000 080 EUR 0 with nuecrs 00006000 (origin 20200219_1_055538_9)
+(T     1) 20-02-2020 07:00:40.745 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 840303000 080 EUR 0 with nuecrs 00006001 (origin 20200219_1_055538_11)
+(T     1) 20-02-2020 07:00:40.745 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 843211000 080 GBP 0 with nuecrs 00002868 (origin 20200219_1_055538_7)
+(T     1) 20-02-2020 07:00:40.745 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 843503000 080 EUR 0 with nuecrs 00004237 (origin 20200219_1_055538_13)
+(T     1) 20-02-2020 07:00:40.750 (I) ap_cta.c    ( 211) cta_tds_notify_postdisp - tdscta.fiches is empty !?
+(T     1) 20-02-2020 07:00:40.757 (I) ctadisp.c   ( 255) ctadisp - Return code is 0 - Return time is 70040
+

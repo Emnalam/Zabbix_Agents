@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings
+  useScheduler="true"
+  defaultFrequenceMilliseconds="45000"
+  logToConsole="false"
+  logToFile="true"
+  logLevel="trace"
+  logFileCount="5"
+  logFileSizeInBytes="10000000"
+  logFile="log/agents.log"
+  dateFormat="yyyy-MM-dd_HH_mm_ss_SSS"
+  transferBin="bin"
+  useTransfer="false"
+  transferServer=""
+  transferPort=""
+  transferLogin=""
+  transferPassword="">
+  <workers>
+    <workerInfos name="launch trap.sh for all customers and products" disableTransfer="true">
+      <successExitCode>0</successExitCode>
+      <classname>workers.common.CommandExecutorWorker</classname>
+      <command>/home/nwaagent/localbin/workers.sh</command>
+      <outputfile>output/trap.xml</outputfile>
+      <scheduling enabled="true">
+      </scheduling>
+    </workerInfos>
+  </workers>
+</settings>
+

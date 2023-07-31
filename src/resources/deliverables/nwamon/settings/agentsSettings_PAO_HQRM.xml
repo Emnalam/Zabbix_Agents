@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	useScheduler="true" 
+	defaultFrequenceMilliseconds="10000" 
+	logToFile="true" 
+	logToConsole="false" 
+	logFile="log/agents.log" 
+	logLevel="info" 
+	logFileCount="2" 
+	logFileSizeInBytes="10000000" 
+	dateFormat="yyyy-MM-dd_HH_mm_ss_SSS" 
+	transferBin="bin"
+	useTransfer="true" 
+	transferServer="" 
+	transferLogin="" 
+	transferPassword="" 
+	transferPort="22">
+  <workers>  
+		<workerInfos name="Windows Resource Check" disableTransfer="false">
+			<successExitCode>0</successExitCode>
+			<product>pao</product>
+			<subproduct>hqrm</subproduct>
+			<classname>workers.common.ResourcesMonitorWorker</classname>
+			<command>bin\tools\Resources.exe</command>
+			<outputfile>output/hqrm_ResourcesMonitorResult.xml</outputfile>
+			<scheduling enabled="true">
+			</scheduling>
+		</workerInfos>
+		<workerInfos name="PAO Services Monitor" disableTransfer="false">
+			<successExitCode>0</successExitCode>
+			<product>pao</product>
+			<subproduct>hqrm</subproduct>
+			<classname>workers.common.ServicesMonitorWorker</classname>
+			<command>wmic process get name /Format:List &lt;NUL</command>
+			<additionalParameters>processes=msaccess.exe, hqrmConsole.exe</additionalParameters>
+			<outputfile>output/hqrm_ServicesMonitorResult.xml</outputfile>
+			<scheduling enabled="true">
+			</scheduling>
+		</workerInfos>
+<workerInfos name="HQRM log files monitor" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <product>pao</product>
+      <subproduct>hqrm</subproduct>
+      <classname>workers.common.GenericLogFilesMonitorWorker</classname>
+      <command></command>
+      <additionalParameters>directories=C:\ApsysHQOM\log</additionalParameters>
+      <outputfile>output\HQRMLogFilesMonitorResult_{date}.xml</outputfile>
+      <properties>
+	<property name=".*" value=".*\(E\).* | .*- Error.* | .*- ERR.*" />
+      </properties>
+      <scheduling enabled="true">
+      </scheduling>
+    </workerInfos>
+  </workers>
+</settings>

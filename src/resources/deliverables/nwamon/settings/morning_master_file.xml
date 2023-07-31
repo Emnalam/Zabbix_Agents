@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<master>
+    <morning>
+        <configuration>
+            <products>
+                <product name="apsys">
+                    <check tagname="checkbatchlogresult" />
+                    <check tagname="checkcurrenciesupdatedresult" />
+                    <check tagname="checkprogramabortresult" />
+                    <check tagname="checksavesbackup" />
+                    <check tagname="checksecuritiesratesresult" />
+                    <check tagname="checktransactionabortresult" />
+                    <check tagname="currentaccountingdateresult" />
+                    <check tagname="databaseoperationalstatusresult" />
+                    <check tagname="runconfigurationresult" />
+                    <check tagname="othercheck1" />
+                    <check tagname="othercheck2" />
+                    <check tagname="othercheck3" />
+                </product>
+            </products>
+        </configuration>
+    </morning>
+</master>

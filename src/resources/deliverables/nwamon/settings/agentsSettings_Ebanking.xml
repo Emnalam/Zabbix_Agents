@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	useScheduler="true" 
+	defaultFrequenceMilliseconds="10000" 
+	logToFile="true" 
+	logToConsole="false" 
+	logFile="log/agents.log" 
+	logLevel="trace" 
+	logFileCount="2" 
+	logFileSizeInBytes="10000000" 
+	dateFormat="yyyy-MM-dd_HH_mm_ss_SSS" 
+	transferBin="bin"
+	useTransfer="true" 
+	transferServer="" 
+	transferLogin="" 
+	transferPassword="" 
+	transferPort="22">
+  <workers>  
+	<workerInfos name="Windows Resource Check" disableTransfer="false">
+		<successExitCode>0</successExitCode>
+		<product>ebk</product>
+		<classname>workers.common.ResourcesMonitorWorker</classname>
+		<command>bin\tools\Resources.exe</command>
+		<outputfile>output/ResourcesMonitorResult_ebk.xml</outputfile>
+		<scheduling enabled="true">
+			<periodic frequence="10000" />
+			<days />
+		</scheduling>
+	</workerInfos>
+   	<workerInfos name="EBK log file monitor" disableTransfer="false">
+      		<successExitCode>0</successExitCode>
+      		<classname>workers.ebanking.EbankingLogFilesMonitorWorker</classname>
+      		<command></command>
+      		<additionalParameters>directories=C:\Program Files\New Access SA\ebanking\logs;filepattern=ebanking.logs.txt</additionalParameters>
+      		<outputfile>output/LogFilesMonitorResult_ebk_{date}.xml</outputfile>
+      		<scheduling enabled="true">
+      		</scheduling>
+    	</workerInfos>
+  </workers>
+</settings>

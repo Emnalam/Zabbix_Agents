@@ -1,0 +1,17 @@
+[2020/02/17 07:22:12.383] - [Msg] - RPC_LogonUser_DB : Before g_pobjLicence->GetUserConnectionStatus()
+[2020/02/17 07:22:12.383] - [Msg] - RPC_LogonUser_DB : Before DecryptDatabaseLogOnInfo()
+[2020/02/17 07:22:12.383] - [Msg] - RPC_LogonUser_DB : Before g_pobjLicence->NewUser_DB()
+[2020/02/17 07:22:12.383] - [Msg] - User Connexion : Name: ebanking/NALASP01/e6b45be9-187e-49ec-842a-5039fd63a84d, id: 2, Appli: 1, Time: 17.02.2020 07:22:12
+[2020/02/17 07:22:12.383] - [Msg] - RPC_GetBaseKCryptInfos() - Getting encryption profiles
+[2020/02/17 07:22:12.383] - [Msg] - RPC_GetBaseKCryptInfos() - Not enough buffer size allocated!
+[2020/02/17 07:22:12.383] - [Msg] - RPC_GetBaseKCryptInfos() - Getting encryption profiles
+[2020/02/17 07:22:12.383] - [Msg] - RPC_GetBaseKCryptInfos() - End
+[2020/02/17 07:22:12.493] - [Msg] - RPC_LogoffUserEx - UserId :2, AppliId :1, UserName : 'ebanking/NALASP01/e6b45be9-187e-49ec-842a-5039fd63a84d'
+[2020/02/17 07:22:12.493] - [Msg] - User DisConnect :UserId: 2, AppliId: 1, UserName: 'ebanking/NALASP01/e6b45be9-187e-49ec-842a-5039fd63a84d'
+[2020/02/17 07:41:57.887] - [Msg] - WorkerThread1 : Thread Wake Up
+[2020/02/17 07:41:57.887] - [Msg] - WorkerThread1 : Thread Sleeping
+[2020/02/17 08:14:10.393] - [Msg] - RPC_LogonUser_DB : Name = 'ebanking/NALASP01/046c7d06-226c-4e5a-8cd8-51fdb93641c4', id = '2', Appli = '1'
+[2020/02/17 08:14:10.393] - [Msg] - RPC_LogonUser_DB : Before GetItemsInString()
+[2020/02/17 08:14:10.393] - [Msg] - RPC_LogonUser_DB : Before g_pobjLicence->GetUserConnectionStatus()
+[2020/02/17 08:14:10.393] - [Msg] - RPC_LogonUser_DB : Before DecryptDatabaseLogOnInfo()
+[2020/02/17 08:14:10.393] - [Err] - RPC_LogonUser_DB : Before g_pobjLicence->NewUser_DB()

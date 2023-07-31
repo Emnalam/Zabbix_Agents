@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings 
+	  isTestMode="true"
+	  environment="bendura_prod"
+    useScheduler="false" 
+    defaultFrequenceMilliseconds="10000"
+    logToConsole="false" 
+    logToFile="true"  
+    logLevel="info" 
+    logFileCount="5" 
+    logFileSizeInBytes="200000000" 
+    logFile="c:\temp\nwamon\agents.log"
+    dateFormat="yyyy-MM-dd_HH_mm_ss_SSS"
+    transferBin="bin"
+    useTransfer="false">
+  <workers>
+	  <workerInfos name="Test - ErrorsMonitorWorker" disableTransfer="false">
+      <scheduling enabled="true"></scheduling>
+      <classname>workers.apsys.ErrorsMonitorWorker</classname>
+      <command></command>
+      <successExitCode>1</successExitCode>
+      <additionalParameters>directories=src\test\data;includes=apsys_ErrorsMonitorWorker\.log</additionalParameters>
+      <outputfile>src\test\output\ErrorsMonitorWorker_{count}.xml</outputfile>
+       <properties>
+          <property name="batsrv_PRE.*" value="return code 0" />
+        </properties>
+    </workerInfos>
+	  <workerInfos name="Test - GetOperationInfoWorker" disableTransfer="false">
+      <classname>workers.apsys.GetOperationInfoWorker</classname>
+      <command>copy src\test\data\templates\check_apsys_GetOperationInfoWorker.txt</command>
+      <successExitCode>0</successExitCode>
+      <outputfile>src\test\output\GetOperationInfoWorker.xml</outputfile>
+    </workerInfos>
+	  <workerInfos name="Test - ServiceInstanceCheckWithOracle" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.apsys.ServiceInstanceCheckWithOracle</classname>
+      <command>
+        SELECT i.instance_name,srv.cdsrvs,srv.nbsrvi
+        FROM   cdssct sct, cdssrv srv, v$instance i
+        WHERE  sct.idscts = srv.idscts
+        AND    i.instance_name = Trim(sct.idbases)
+	  </command>
+	  <subproduct>oracle_apsys_svcs</subproduct>
+      <additionalParameters>jdbcdriver|oracle.jdbc.driver.OracleDriver||jdbcurl|jdbc:oracle:thin:@vm-psrhel01:1521:cs406p2||user|sungard||password|secret</additionalParameters>
+      <outputfile>src\test\output\ServiceInstanceCheckWithOracle.xml</outputfile>
+    </workerInfos>
+	  <workerInfos name="Test - TransactionsMonitorWorker" disableTransfer="false">
+      <classname>workers.apsys.TransactionsMonitorWorker</classname>
+      <command>powershell.exe -command "&amp; {&amp;'findstr' /c:\"Return code is 0\" src\test\data\*}"</command>
+      <successExitCode>0</successExitCode>
+      <outputfile>src\test\output\TransactionsMonitorWorker_{count}.xml</outputfile>
+    </workerInfos>
+	  <workerInfos name="Test - B250LogFilesMonitorWorker" disableTransfer="false">
+      	<successExitCode>0</successExitCode>
+      	<classname>workers.b250.B250LogFilesMonitorWorker</classname>
+      	<command></command>
+      	<additionalParameters>directories=src\test\data;includes=b250_B250LogFilesMonitorWorker\.log</additionalParameters>
+      	<outputfile>src\test\output\B250LogFilesMonitorWorker_{count}.xml</outputfile>
+      	<scheduling enabled="true">
+      	</scheduling>
+    </workerInfos>
+    <workerInfos name="Test - CIMProcessManagerMonitorWorker" disableTransfer="false">
+			<classname>workers.cim.CIMProcessManagerMonitorWorker</classname>
+			<command>src\resources\deliverables\nwamon\windows\kit\tools\PMThreadMonitor.exe 5000 &quot;ProzessMgr&quot;</command>
+			<successExitCode>0</successExitCode>			
+			<additionalParameters>dburl|jdbc:oracle:thin:@emeagvaser08:1521:CIM405P2||dbuser|BON_CIM_ENV||dbpwd|BON_CIM_ENV||dbschema|BON_CIM_ENV</additionalParameters>
+			<outputfile>src\test\output\CIMProcessManagerMonitorWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - HqomApsysDocumentTableCheckWithOracle" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.cim.HqomApsysDocumentTableCheckWithOracle</classname>
+      <command>
+        	SELECT
+            idlsts,
+            idreps,
+            idtitul,
+            avicdapps,
+            avidtcptl,
+            avinusesi,
+            avifiches,
+            cdstatc
+          from 
+            rephis
+          where cdstatc &lt;&gt; 'O'
+	  </command>
+	  <product>cim</product>
+	  <subproduct>oracle_apsys_rephis</subproduct>
+      <additionalParameters>jdbcdriver|oracle.jdbc.driver.OracleDriver||jdbcurl|jdbc:oracle:thin:@vm-psrhel01:1521:cs406p2||user|sungard||password|secret</additionalParameters>
+      <outputfile>src\test\output\HqomApsysDocumentTableCheckWithOracle.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - CheckCertificateExpiryWorker" disableTransfer="false">
+      	<successExitCode>0</successExitCode>
+        <product>ebk</product>
+      	<classname>workers.common.CheckCertificateExpiryWorker</classname>
+      	<command></command>
+      	<additionalParameters>url=https://www.google.com;file=C:\temp\certif.cer</additionalParameters>
+      	<outputfile>src\test\output\CheckCertificateExpiryWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - CheckFileExistsWorker" disableTransfer="false">
+      	<successExitCode>0</successExitCode>
+      	<classname>workers.common.CheckFileExistsWorker</classname>
+      	<command></command>
+      	<additionalParameters>files=src\test\settings\agentsSettings.xml,src\test\settings\NotFound.txt;exist=EXIST;notexist=NOTEXIST</additionalParameters>
+      	<outputfile>src\test\output\CheckFileExistsWorker_{count}.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - CheckUrlAvailabilityWorker" disableTransfer="false">
+      	<successExitCode>0</successExitCode>
+      	<classname>workers.common.CheckUrlAvailabilityWorker</classname>
+      	<command></command>
+      	<additionalParameters>url=http://nowhere.notfound;successhttpcode=200</additionalParameters>
+      	<outputfile>src\test\output\CheckUrlAvailabilityWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - CommandExecutorWorker" disableTransfer="false">
+      	<successExitCode>0</successExitCode>
+      	<classname>workers.common.CommandExecutorWorker</classname>
+      	<command>echo "Test command"</command>
+      	<additionalParameters></additionalParameters>
+      	<outputfile>src\test\output\CommandExecutorWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - DBCheckUsersWorker" disableTransfer="false">
+      <product>apsys</product>
+      <classname>workers.common.DBCheckUsersWorker</classname>
+      <command>
+     	  SELECT username, account_status, expiry_date FROM dba_users
+        WHERE account_status NOT IN ('OPEN','LOCKED') and oracle_maintained='N' and authentication_type = 'PASSWORD' 
+	      AND username NOT IN ('BUSINESS')
+      </command> 
+      <additionalParameters>dburl|jdbc:oracle:thin:@vm-psrhel01:1521:cs406p2||dbuser|sungard||dbpwd|secret</additionalParameters>
+      <outputfile>src\test\output\DBCheckUsersWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - FileProgressMonitorWorker" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.common.FileProgressMonitorWorker</classname>
+      <product>apsys</product> 
+      <zTag>batch</zTag>
+      <additionalParameters>directories=src\test\data;includes=check_common_FileProgressMonitorWorker\.log;idleTimeoutMinutes=1</additionalParameters>
+      <outputfile>src\test\output\FileProgressMonitorWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - FolderMonitorWorker" disableTransfer="false">
+      	<successExitCode>0</successExitCode>
+      	<classname>workers.common.FolderMonitorWorker</classname>
+      	<command></command>
+      	<additionalParameters>directories=src\test\data\,src\test\data\;filesexist=EXIST;filesnotexist=NOTEXIST</additionalParameters>
+      	<outputfile>src\test\output\FolderMonitorWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - FilePusherWorker" disableTransfer="false">
+      	<successExitCode>0</successExitCode>
+      	<classname>workers.common.FilePusherWorker</classname>
+      	<command></command>
+      	<additionalParameters>directory=src\test\data</additionalParameters>
+      	<outputfile>src\test\output\FilePusherWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - GenericLogFilesMonitorWorker" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <product>pao</product>
+      <subproduct>hqam</subproduct>
+      <classname>workers.common.GenericLogFilesMonitorWorker</classname>
+      <command></command>
+      <additionalParameters>directories=src\test\data;includes=common_GenericLogFilesMonitorWorker\.log</additionalParameters>
+      <outputfile>src\test\output\GenericLogFilesMonitorWorker_{count}.xml</outputfile>
+      <properties>
+	      <property name=".*" value=".*\(TestData\).* | .*- TestData -.*" />
+      </properties>
+    </workerInfos>
+    <workerInfos name="Test - ProcessesMonitorWorker" disableTransfer="false">
+      <product>apsys</product>
+      <classname>workers.common.ProcessesMonitorWorker</classname>
+      <command>wmic process get name</command>
+      <successExitCode>0</successExitCode>
+      <additionalParameters>processes=dspsrv,devsrv,nfysrv,lstsrv,filsrv,jmssrv,fctsrv,fixsrv,jwssrv,dassrv,emisrv_igt,prtsrv,cinsrv,quesrv,arcsrv,persrv,bkosrv,fiisrv</additionalParameters>
+      <outputfile>src\test\output\ProcessesMonitorWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - ResourcesMonitorWorker" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+	  <product>eqz</product>
+      <classname>workers.common.ResourcesMonitorWorker</classname>
+      <command>src\resources\deliverables\nwamon\windows\kit\tools\Resources.exe</command>
+      <outputfile>src\test\output\ResourcesMonitorResult.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - ServicesMonitorWorker" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.common.ServicesMonitorWorker</classname>
+      <command>wmic service where started=true get name</command>
+	    <product>integrator</product>
+      <additionalParameters>processes=NWA_CommonLog, NWA_IntradayService, NWA_Synchronization, ActiveMQ</additionalParameters>
+      <outputfile>src\test\output\ServicesMonitorWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - SqlQueryMonitorWorker" disableTransfer="false">
+      <classname>workers.common.SqlQueryMonitorWorker</classname>
+      <product>integrator</product>
+      <subproduct>intraday</subproduct>
+        <command>
+          select * from dual FETCH FIRST 5 ROWS ONLY
+        </command>
+        <additionalParameters>jdbcdriver|oracle.jdbc.driver.OracleDriver||jdbcurl|jdbc:oracle:thin:sungard/secret@vm-psrhel01:1521:cs406p2</additionalParameters>
+        <outputfile>src\test\output\SqlQueryMonitorWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - SqlQueryToTextWorker" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.common.SqlQueryToTextWorker</classname>
+      <command>
+          select 
+          (select instance_name from v$instance) as name,
+          operation,
+            status,
+            object_type,
+            To_Char(start_time,'dd.mm.yyyy:hh24:mi:ss') AS start_time,
+          To_Char(end_time,'dd.mm.yyyy:hh24:mi:ss') AS end_time,
+          case 
+              when start_time is null then 'NOK'
+              when start_time &lt; sysdate-1 then 'NOK' 
+              else 'OK' end as nwamon_status
+          from v$rman_status
+          WHERE start_time >  sysdate -1
+          and operation= 'BACKUP'
+          and object_type = 'DB FULL'
+          order by start_time desc	
+          fetch first 1 row only	   		
+      </command>
+      <product>sql</product>
+      <subproduct>oracle_cim_backups</subproduct>
+      <additionalParameters>jdbcdriver|oracle.jdbc.driver.OracleDriver||jdbcurl|jdbc:oracle:thin:sungard/secret@vm-psrhel01:1521:cs406p2</additionalParameters>
+      <outputfile>src\test\output\SqlQueryToTextWorker.xml</outputfile>
+    </workerInfos>
+    	<workerInfos name="Test - EbankingLogFilesMonitorWorker" disableTransfer="false">
+      		<successExitCode>0</successExitCode>
+      		<classname>workers.ebanking.EbankingLogFilesMonitorWorker</classname>
+      		<command></command>
+      		<additionalParameters>directories=src\test\data;includes=ebanking_EbankingLogFilesMonitorWorker\.log</additionalParameters>
+      		<outputfile>src\test\output\EbankingLogFilesMonitorWorker_{count}.xml</outputfile>
+      		<scheduling enabled="true">
+      		</scheduling>
+    	</workerInfos>
+      <workerInfos name="Test - EqconvLogFileMonitorWorker" disableTransfer="false">
+        <successExitCode>0</successExitCode>
+        <product>eqz</product>
+        <classname>workers.equalizer.EqconvLogFileMonitorWorker</classname>
+        <command></command>
+        <additionalParameters>directories=src\test\data;includes=equalizer_EqconvLogFileMonitorWorker\.log</additionalParameters>
+        <outputfile>src\test\output\EqconvLogFileMonitorWorker_{count}.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - EqIsFileMonitorWorker" disableTransfer="false">
+        <successExitCode>0</successExitCode>
+        <product>eqz</product>
+        <classname>workers.equalizer.EqIsLogFileMonitorWorker</classname>
+        <command></command>
+        <additionalParameters>directories=src\test\data;includes=equalizer_EqIsLogFileMonitorWorker\.log</additionalParameters>
+        <outputfile>src\test\output\EqIsLogFileMonitorWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - EqPsLogFileMonitorWorker" disableTransfer="false">
+        <successExitCode>0</successExitCode>
+        <product>eqz</product>
+        <classname>workers.equalizer.EqPsLogFileMonitorWorker</classname>
+        <command></command>
+        <additionalParameters>directories=src\test\data;includes=equalizer_EqPsLogFileMonitorWorker\.log</additionalParameters>
+        <outputfile>src\test\output\EqPsLogFileMonitorWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - EqWsLogFileMonitorWorker" disableTransfer="false">
+        <successExitCode>0</successExitCode>
+        <product>eqz</product>
+        <classname>workers.equalizer.EqWsLogFileMonitorWorker</classname>
+        <command></command>
+        <additionalParameters>directories=src\test\data;includes=equalizer_EqWsLogFileMonitorWorker\.log</additionalParameters>
+        <outputfile>src\test\output\EqWsLogFileMonitorWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - EqXorLogFileMonitorWorker" disableTransfer="false">
+        <successExitCode>0</successExitCode>
+        <product>eqz</product>
+        <classname>workers.equalizer.EqXorLogFileMonitorWorker</classname>
+        <command></command>
+        <additionalParameters>directories=src\test\data;includes=equalizer_EqXorLogFileMonitorWorker\.log</additionalParameters>
+        <outputfile>src\test\output\EqXorLogFileMonitorWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - LasLogFilesMonitorWorker" disableTransfer="false">
+        <successExitCode>0</successExitCode>
+        <product>eqz</product>
+        <classname>workers.las.LasLogFilesMonitorWorker</classname>
+        <command></command>
+        <additionalParameters>directories=src\test\data;includes=las_LasLogFilesMonitorWorker\.log</additionalParameters>
+        <outputfile>src\test\output\LasLogFilesMonitorWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - EdmsLogFilesMonitorWorker" disableTransfer="false">
+        <successExitCode>0</successExitCode>
+        <product>eqz</product>
+        <classname>workers.las.EdmsLogFilesMonitorWorker</classname>
+        <command></command>
+        <additionalParameters>directories=src\test\data;includes=las_EdmsLogFilesMonitorWorker\.log</additionalParameters>
+        <outputfile>src\test\output\EdmsLogFilesMonitorWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - IntegratorCommonsLogMonitorWorker" disableTransfer="false">
+      <classname>workers.integrator.IntegratorCommonsLogMonitorWorker</classname>
+      <command />
+      <additionalParameters>jdbcdriver|com.microsoft.sqlserver.jdbc.SQLServerDriver||jdbcurl|jdbc:sqlserver://ch-gbc-sql-02:1433;;databaseName=Integrator_DEMO_Member_DEV;user=osi;password=osimnemo</additionalParameters>
+      <outputfile>src\test\output\IntegratorCommonsLogMonitorWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - EqualizerNewDayCheckerWorker" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.equalizer.EqualizerNewDayCheckerWorker</classname>
+      <command />
+      <additionalParameters>equalizerpath=\\naboo2\EqualizerEnvironments\03EE\8.3\Gonet\Equalizer;dbConnection=jdbcdriver|oracle.jdbc.driver.OracleDriver||jdbcurl|jdbc:oracle:thin:sungard/secret@vm-psrhel01:1521:cs406p2</additionalParameters>
+      <outputfile>src\test\output\EqualizerNewDayCheckerWorker.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Test - EqualizerIntegrityCheckerWorker" disableTransfer="false">
+      <successExitCode>1</successExitCode>
+      <classname>workers.equalizer.EqualizerIntegrityCheckerWorker</classname>
+      <command>eqconv.exe /password=enc(96DA642F2AF2635B) /check_assets /fullkey /from=${lastday} /to=${lastday} /query=std.CheckInt /cfgfile=W:\8.3\QA\Equalizer\eqconv.cfg 2&gt;&amp;1
+			   eqconv.exe /password=enc(96DA642F2AF2635B) /check_cash /fullkey /from=${lastday} /to=${lastday} /query=std.CheckInt /cfgfile=W:\8.3\QA\Equalizer\eqconv.cfg 2&gt;&amp;1
+	    </command>
+      <additionalParameters>equalizerpath=W:\8.3\QA\Equalizer</additionalParameters>
+      <outputfile>src\test\output\EqualizerIntegrityCheckerWorker.xml</outputfile>
+    </workerInfos>
+  </workers>
+</settings> 

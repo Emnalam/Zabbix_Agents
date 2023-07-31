@@ -1,0 +1,12 @@
+(T     1) 20-02-2020 07:02:39.667 (I) ctadisp.c   (  96) ctadisp - Env is CTA - Activation time is 70239
+(T     1) 20-02-2020 07:02:39.667 (I) ctacta.c    (  77) ctacta - Acknowledged slip CTA 20200220 1 055558
+(T     1) 20-02-2020 07:02:39.668 (I) ap_cet.c    ( 673) cet_ctaext - Acknowledged slip CTA 20200219 1 055549 to be reversed
+(T     1) 20-02-2020 07:02:39.741 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 811031500 150 CHF 0 with nuecrs 00011269 (origin 20200219_1_055549_1)
+(T     1) 20-02-2020 07:02:39.741 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 811031500 150 CHF 0 with nuecrs 00011270 (origin 20200219_1_055549_3)
+(T     1) 20-02-2020 07:02:39.742 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 811031500 150 CHF 0 with nuecrs 00011271 (origin 20200219_1_055549_7)
+(T     1) 20-02-2020 07:02:39.742 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 890080000 150 CHF 0 with nuecrs 00003826 (origin 20200219_1_055549_2)
+(T     1) 20-02-2020 07:02:39.742 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 890140000 150 CHF 0 with nuecrs 00003606 (origin 20200219_1_055549_8)
+(T     1) 20-02-2020 07:02:39.742 (W) ap_cet.c    ( 794) cet_ctaext - No reversal MVTCTA found for account 890220000 150 CHF 0 with nuecrs 00003403 (origin 20200219_1_055549_4)
+(T     1) 20-02-2020 07:02:39.745 (I) ap_cta.c    ( 211) cta_tds_notify_postdisp - tdscta.fiches is empty !?
+(T     1) 20-02-2020 07:02:39.752 (I) ctadisp.c   ( 255) ctadisp - Return code is 1 - Return time is 70239
+

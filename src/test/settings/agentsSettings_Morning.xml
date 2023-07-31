@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings environment="bendura_prod"
+      useScheduler="true" 
+      defaultFrequenceMilliseconds="10000"
+      logToConsole="false" 
+      logToFile="true"  
+      logLevel="trace" 
+      logFileCount="5" 
+      logFileSizeInBytes="200000000" 
+      logFile="log/agents.log"
+      dateFormat="yyyy-MM-dd_HH_mm_ss_SSS"
+      transferBin="bin"
+      useTransfer="false"
+      transferServer="localhost"
+      transferPort="22"
+      transferLogin="nfs_monitoring"
+      transferPassword="lzpwd">
+  <morning>
+    <scheduling enabled="false" />
+      
+    <workerInfos name="Check Database Operational Status" disableTransfer="false">
+      <classname>workers.morning.apsys.DatabaseOperationalStatus</classname>
+      <additionalParameters>dbConnection=jdbcdriver|oracle.jdbc.driver.OracleDriver||jdbcurl|jdbc:oracle:thin:sungard/secret@localhost:1521:cs406p2</additionalParameters>
+      <outputfile>output/morning/DatabaseOperationalStatus.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Check Current Accounting Date" disableTransfer="false">
+      <classname>workers.morning.apsys.CurrentAccountingDate</classname>
+      <outputfile>output/morning/CurrentAccountingDate.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Check Batch Log" disableTransfer="false">
+      <classname>workers.morning.apsys.CheckBatchLog</classname>
+      <outputfile>output/morning/CheckBatchLog.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Check Program Abort" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.morning.apsys.CheckProgramAbort</classname>
+      <outputfile>output/morning/CheckProgramAbort.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Check Saves Backup" disableTransfer="false">
+      <classname>workers.morning.apsys.CheckSavesBackup</classname>
+      <outputfile>output/morning/CheckSavesBackup.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Check Securities Rates" disableTransfer="false">
+      <classname>workers.morning.apsys.CheckSecuritiesRates</classname>
+      <outputfile>output/morning/CheckSecuritiesRates.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Check Currencies" disableTransfer="false">
+      <classname>workers.morning.apsys.CheckCurrenciesUpdated</classname>
+      <outputfile>output/morning/CheckCurrenciesUpdated.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Check Transactions Aborted" disableTransfer="false">
+      <classname>workers.morning.apsys.CheckTransactionAbort</classname>
+      <additionalParameters>dbConnection=jdbcdriver|oracle.jdbc.driver.OracleDriver||jdbcurl|jdbc:oracle:thin:sungard/secret@localhost:1521:cs406p2</additionalParameters>
+      <outputfile>output/morning/CheckTransactionAbort.xml</outputfile>
+    </workerInfos>
+    <workerInfos name="Check Run Configuration" disableTransfer="false">
+      <classname>workers.morning.apsys.RunConfiguration</classname> 
+      <additionalParameters>dbConnection=jdbcdriver|oracle.jdbc.driver.OracleDriver||jdbcurl|jdbc:oracle:thin:sungard/secret@localhost:1521:cs406p2</additionalParameters>
+      <outputfile>output/morning/RunConfiguration.xml</outputfile>
+    </workerInfos>
+  </morning>
+</settings> 

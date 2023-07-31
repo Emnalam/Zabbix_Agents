@@ -1,0 +1,114 @@
+Starting full conversion (version 8.0.00.17082215) at 2017-10-04-16:20:21
+
+     Copying file orders.t to 20161124
+
+     Copying file storders.t to 20161124
+
+     Warning: doing backup of old data into Z:\03EE\8.0\Havilland\Equalizer_Reporting\Equalizer\History\20161124.hst\Backup15
+
+     Processing file: Eqratp1 (exchange rates)
+
+               read:        72 records
+
+     Processing file: Eqratp2 (exchange rates info)
+
+               read:        72 records
+               written:     72 records
+
+     Processing file: Eqcrip1 (codification / criteria type)
+
+               read:       187 records
+
+     Processing file: Eqcrip3 (codification / dictionary)
+
+               read:       561 records
+               written:    561 records (into file eqcrip13)
+
+     Processing file: Eqestp1 (client properties)
+
+               read:        19 records
+               written:     19 records
+
+     Processing file: Eqestp2 (portfolios properties)
+
+               read:        20 records
+               written:     20 records
+
+     Processing file: Eqestp0 (positions)
+
+               read:       425 records
+               written:    425 records
+
+     Processing file: Eqratp3 (security rates)
+
+               read:     19779 records
+               written:  19779 records
+
+     Processing file: Eqratp4 (security properties)
+
+               read:     19779 records
+               written:  19779 records (2 records with warnings)
+
+     Processing file: Eqcrip2 (codification / occurrences list)
+
+               read:     39934 records
+               written:  39908 records (35 records skipped, 9 records added)
+
+     Processing file: eqdefusr
+
+               read:         6 records
+               written:      0 records (6 records ignored)
+
+     Processing file: eqcomptf
+
+               read:        26 records
+               written:     26 records
+
+     Processing file: eqaccrgt
+
+               read:        60 records
+               written:      0 records (60 records ignored)
+
+     Copying file mptfprop.t to 20161124
+
+     Copying file udefmemo.t to 20161124
+
+     Copying file orders.t to 20161124
+
+     Copying file storders.t to 20161124
+
+     Copying file asecinfo.t to 20161124
+
+     Copying file buylist.t to 20161124
+
+     Updating file udefmemo.t
+
+     Cleaning file orders.t
+
+     Cleaning file wsorders.t
+
+     Calculating initial WCRG
+
+     Re-processing file: Z:\03EE\8.0\Havilland\Equalizer_Reporting\Equalizer\Params\fwdtrap0.t. Lot = 100000
+
+               read:       416 records
+               written:    416 records
+
+     Re-processing file: Z:\03EE\8.0\Havilland\Equalizer_Reporting\Equalizer\History\20161123.hst\eqtrap0.t. Lot = 100000
+
+               read:        57 records
+               written:     57 records
+
+     Processing file: Eqtrap0 (transactions). Lot = 100000
+
+               read:        40 records
+               written:     40 records
+
+     72 errors detected. Please check file 'Z:\03EE\8.0\Havilland\Equalizer_Reporting\Equalizer\Audit\Maintenance\conflict.txt'
+
+Full conversion successfully finished at 2017-10-04-16:20:40
+
+Starting table structure update (version 8.0.00.DELTA-A.17101115) at 2017-10-16-15:27:35
+Finishing table structure update
+EqConv V8.0.00.DELTA-A.17101115 started at 2017-10-19 15:51:57 with option(s): /admin=eqadmin /calculate_alerts  . Pid=3596.
+EqConv V8.0.00.DELTA-A.17101115 finished at 2017-10-19 15:51:59, Pid=3596, Rc=1

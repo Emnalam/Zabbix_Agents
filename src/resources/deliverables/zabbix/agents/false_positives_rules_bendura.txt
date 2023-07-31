@@ -1,0 +1,38 @@
+Got an exception while notifying a SSE subscriber for message updates
+APS_WARNING (129)
+_Different statuses were found in the same header
+Unkown Equalizer factor
+only the first occurrence is used, the subsequent ones are ignored
+not found in mapping
+_Parameter "CancelledQtyEqzField" is not defined
+Cannot obtain the name of Equalizer
+One of the following Functional Roles is missing: EBankingIdentity
+EQZ_TRANSACTIONS_RAW (10) returned no rows
+Transactions corresponding to the date
+Error while dispatching read messages (thread
+Device type not specified. Will use
+ActivityLog:
+Two factor token already existing
+OK - Archivierung Datei
+Cannot read EUROSIC
+Cannot execute request EQZ_I001
+No printing, because an error occurred
+IntraDay cannot start because Eod is not acknowledged
+files processed with
+statusErrors" : \[  \]
+Poduct risk not found in titcrs
+\[info\]
+ApsysSetTrace
+executing printing command
+WARNING: Datei Z
+ECPTBL
+stdcheck_val_cdopsaut_ctx
+cif_get_def_iddonordrgu_ctx
+per_isperf
+ECLIBL
+cal_titre_intcouru_oneperiod_ctx
+cal_init_dtpayl_ctx
+cpts_getaccount_by_idiexs
+do_pgb
+WARNING:  Datei Z
+tit_get_product_risk_ctx

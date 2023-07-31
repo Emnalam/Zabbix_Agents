@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<master>
+    <morning>
+        <configuration>
+            <products>
+                <product name="apsys">
+                    <check tagname="currentaccountingdateresult">
+                      <ok>
+                        <entry>
+                          <key>accountingDate</key>
+                          <value>dtcptl</value>
+                        </entry>
+                      </ok>
+                    </check>
+                    <check tagname="databaseoperationalstatusresult">
+                      <ok>
+                        <entry>
+                          <key>currentStage</key>
+                          <value>J</value>
+                        </entry>
+                        <entry>
+                          <key>operatingMode</key>
+                          <value>A</value>
+                        </entry>
+                      </ok>
+                    </check>
+                    <check tagname="runconfigurationresult">
+                      <ok>
+                        <entry>
+                          <key>runCount</key>
+                          <value>1</value>
+                        </entry>
+                      </ok>
+                    </check>
+                    <check tagname="checksavesbackup">
+                       <ok>
+                        <entry>
+                          <key>savesBackupOk</key>
+                          <value>true</value>
+                        </entry>
+                      </ok>
+                    </check>
+                    <check tagname="checkcurrenciesupdatedresult">
+                      <ok>
+                        <entry>
+                          <key>count</key>
+                          <value>10000</value>
+                        </entry>
+                        <entry>
+                          <key>errorsCount</key>
+                          <value>0</value>
+                        </entry>
+                      </ok>
+                    </check>
+                    <check tagname="checksecuritiesratesresult">
+                       <ok>
+                        <entry>
+                          <key>count</key>
+                          <value>1000</value>
+                        </entry>
+                      </ok>
+                    </check>
+                    <check tagname="checktransactionabortresult">
+                      <ok>
+                        <entry>
+                          <key>transactionErrors</key>
+                          <value>0</value>
+                        </entry>
+                      </ok>
+                    </check>
+                    <check tagname="checkprogramabortresult">
+                       <ok>
+                        <entry>
+                          <key>batchProgramAborts</key>
+                          <value>0</value>
+                        </entry>
+                      </ok>
+                    </check>
+                    <check tagname="checkbatchlogresult">
+                      <ok>
+                        <entry>
+                          <key>count</key>
+                          <value>10</value>
+                        </entry>
+                      </ok>
+                    </check>
+                </product>
+                <product name="eqz">
+                    <check tagname="currentaccountingdateresult" />
+                    <check tagname="databaseoperationalstatusresult" />
+                    <check tagname="runconfigurationresult" />
+                     <check tagname="checksavesbackup" />
+                    <check tagname="checkcurrenciesupdatedresult" />
+                    <check tagname="checksecuritiesratesresult" />
+                    <check tagname="checktransactionabortresult" />
+                    <check tagname="checkprogramabortresult" />
+                    <check tagname="checkbatchlogresult" />
+                </product>
+            </products>
+        </configuration>
+    </morning>
+</master>

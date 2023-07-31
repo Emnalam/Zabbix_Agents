@@ -1,0 +1,1 @@
+For Windows Authentication, copy the sqljdbc_auth.dll in the JRE or JDK bin folder

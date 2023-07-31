@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	environment="bendura.prod.nalasp01"
+	useScheduler="true" 
+	defaultFrequenceMilliseconds="10000" 
+	logToFile="true" 
+	logToConsole="false" 
+	logFile="log/agents.log" 
+	logLevel="info" 
+	logFileCount="1" 
+	logFileSizeInBytes="10000000" 
+	dateFormat="yyyy-MM-dd_HH_mm_ss_SSS" 
+	transferBin="bin"
+	useTransfer="true" 
+	transferServer="" 
+	transferLogin="" 
+	transferPassword="" 
+	transferPort="22">
+  <workers>
+    <workerInfos name="EDMS log file monitor" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.las.EdmsLogFilesMonitorWorker</classname>
+      <command></command>
+      <additionalParameters>directories=C:\Program Files (x86)\Logical Access\logs\EDMSServer;filepattern=edmsserver.txt</additionalParameters>
+      <outputfile>output\las_EdmsLogFilesMonitorResult_{date}.xml</outputfile>
+      <scheduling enabled="true">
+      </scheduling>
+    </workerInfos>
+
+    <workerInfos name="AutoArchive log file monitor" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <product>las</product>
+      <subproduct>autoarc</subproduct>
+      <classname>workers.common.GenericLogFilesMonitorWorker</classname>
+      <command></command>
+      <additionalParameters>directories=E:\LASAutoArchiving\Log;filepattern=ActivityLogFile.*</additionalParameters>
+      <outputfile>output\las_AutoArchiveLogFilesMonitorResult_{date}.xml</outputfile>
+      <properties>
+	      <property name=".*" value=".*some error.*" />
+      </properties>
+      <scheduling enabled="true">
+      </scheduling>
+    </workerInfos>
+
+    <workerInfos name="AutoArchive Idle Files check" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <product>las</product>
+      <subproduct>autoarc</subproduct>
+      <classname>workers.common.CommandExecutorWorker</classname>
+      <command>powershell -command "C:\nwamon\bin\tools\autoarchive_check_idle.ps1"</command>
+      <outputfile>output\las_AutoArchiveIdleFilesMonitorResult.xml</outputfile>
+      <scheduling enabled="true">
+        <periodic frequence="30000" />
+      </scheduling>
+    </workerInfos>
+
+    <workerInfos name="LAS log file monitor" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.las.LasLogFilesMonitorWorker</classname>
+      <command></command>
+      <additionalParameters>directories=C:\Program Files (x86)\Logical Access\logs\LAServerLog\LAServerLog;filepattern=LA_Server.log</additionalParameters>
+      <outputfile>output\las_logFilesMonitorResult_{date}.xml</outputfile>
+      <scheduling enabled="true">
+      </scheduling>
+    </workerInfos>
+
+    <workerInfos name="LAS/EDMS Services Monitor" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <product>las</product>
+      <classname>workers.common.ServicesMonitorWorker</classname>
+      <command>wmic service where started=true get name /Format:List &lt;NUL</command>
+      <additionalParameters>processes=EDMS .NET Server, EDMSComSrv, Logical Access Server</additionalParameters>
+      <outputfile>output/las_ServicesMonitorResult.xml</outputfile>
+      <scheduling enabled="true">
+      </scheduling>
+    </workerInfos>
+
+    <workerInfos name="Windows Resource Check" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <product>las</product>
+      <classname>workers.common.ResourcesMonitorWorker</classname>
+      <command>bin\tools\Resources.exe</command>
+      <outputfile>output/las_resourcesMonitorResult.xml</outputfile>
+      <scheduling enabled="true">
+      </scheduling>
+    </workerInfos>
+  </workers>
+</settings>

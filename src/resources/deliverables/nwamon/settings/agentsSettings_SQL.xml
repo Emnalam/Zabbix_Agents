@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	environment="bendura.prod.nasqlp01"
+	useScheduler="true" 
+	defaultFrequenceMilliseconds="10000" 
+	logToFile="true" 
+	logToConsole="false" 
+	logFile="log/agents.log" 
+	logLevel="info" 
+	logFileCount="2" 
+	logFileSizeInBytes="10000000" 
+	dateFormat="yyyy-MM-dd_HH_mm_ss_SSS" 
+	transferBin="bin"
+	useTransfer="true" 
+	transferServer="" 
+	transferLogin="" 
+	transferPassword="" 
+	transferPort="22">
+  <workers>  
+		<workerInfos name="Windows Resource Check" disableTransfer="false">
+			<successExitCode>0</successExitCode>
+			<product>sql</product>
+			<classname>workers.common.ResourcesMonitorWorker</classname>
+			<command>bin\tools\Resources.exe</command>
+			<outputfile>output/sql_ResourcesMonitorResult.xml</outputfile>
+			<scheduling enabled="true">
+				<periodic frequence="10000" />
+				<days />
+			</scheduling>
+		</workerInfos>
+		<workerInfos name="SQL Services Monitor" disableTransfer="false">
+			<successExitCode>0</successExitCode>
+			<product>sql</product>
+			<classname>workers.common.ServicesMonitorWorker</classname>
+			<command>wmic service where started=true get name /Format:List &lt;NUL</command>
+			<additionalParameters>processes=MSSQLSERVER,MSSQL$EDMS,SQLBrowser</additionalParameters>
+			<outputfile>output/sql_ServicesMonitorResult.xml</outputfile>
+			<scheduling enabled="true">
+				<periodic frequence="10000" />
+				<days />
+			</scheduling>
+		</workerInfos>
+		<workerInfos name="SQL Backups" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.common.SqlQueryToTextWorker</classname>
+      <command>
+SELECT d.name AS "Database",
+		ISNULL(CONVERT(VARCHAR,b.backupdate,120),'NEVER') AS "Last Full Backup",
+		(case when b.backupdate &lt; getdate() -1 OR b.backupdate is null then 'NOK' else 'OK' end)  as nwamon_status
+FROM sys.databases d
+
+LEFT JOIN (
+	SELECT database_name,type,MAX(backup_finish_date) backupdate 
+	FROM msdb..backupset
+	WHERE type LIKE 'D'
+	GROUP BY database_name,type) b 
+on d.name=b.database_name
+
+where d.name not in ('master', 'tempdb', 'model', 'msdb')
+
+	  </command>
+	  <product>sql</product>
+	  <subproduct>backups</subproduct>
+      <additionalParameters>jdbcdriver|com.microsoft.sqlserver.jdbc.SQLServerDriver||jdbcurl|jdbc:sqlserver://nasqlp01.hypo.local:1433;;databaseName=Import_SIT;integratedsecurity=true</additionalParameters>
+      <outputfile>output/sqlServerBackups.xml</outputfile>
+      <scheduling enabled="true">
+        <periodic frequence="600000" />
+        <days />
+      </scheduling>
+    </workerInfos>
+
+<workerInfos name="SQL Logs" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.common.SqlQueryToTextWorker</classname>
+      <command>
+declare @dbcc Table
+(
+	[Database Name] varchar(255),
+	[Log Size (MB)] decimal,
+	[Log Space Use (%)] decimal,
+	[Status] int
+)
+insert into @dbcc exec('DBCC SQLPERF(LOGSPACE)')
+
+select  
+	[Database Name],
+	[Log Size (MB)] ,
+	[Log Space Use (%)],
+	(case when [Log Space Use (%)] &gt; 90 then 'NOK' else 'OK' end) as nwamon_status
+from @dbcc
+
+	  </command>
+	  <product>sql</product>
+	  <subproduct>logs</subproduct>
+      <additionalParameters>jdbcdriver|com.microsoft.sqlserver.jdbc.SQLServerDriver||jdbcurl|jdbc:sqlserver://nasqlp01.hypo.local:1433;;databaseName=Import_SIT;integratedsecurity=true</additionalParameters>
+      <outputfile>output/sqlServerLogs.xml</outputfile>
+      <scheduling enabled="true">
+        <periodic frequence="600000" />
+        <days />
+      </scheduling>
+    </workerInfos>
+<workerInfos name="SQL Indexes" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.common.SqlQueryToTextWorker</classname>
+      <command>
+	SELECT OBJECT_NAME(OBJECT_ID) as Object, index_id,index_type_desc,index_level,
+avg_fragmentation_in_percent,avg_page_space_used_in_percent,page_count, 
+(case when avg_fragmentation_in_percent &gt; 90 then 'NOK' else 'OK' end) as nwamon_status
+FROM sys.dm_db_index_physical_stats
+(DB_ID(N'Integrator_DEMO_Import_DEV'), NULL, NULL, NULL , 'SAMPLED')
+where avg_fragmentation_in_percent &gt; 90
+ORDER BY avg_fragmentation_in_percent DESC;
+	  </command>
+	  <product>sql</product>
+	  <subproduct>indexes</subproduct>
+      <additionalParameters>jdbcdriver|com.microsoft.sqlserver.jdbc.SQLServerDriver||jdbcurl|jdbc:sqlserver://nasqlp01.hypo.local:1433;;databaseName=Import_SIT;integratedsecurity=true</additionalParameters>
+      <outputfile>output/sqlServerIndexes.xml</outputfile>
+      <scheduling enabled="true">
+        <periodic frequence="600000" />
+        <days />
+      </scheduling>
+    </workerInfos> 
+  </workers>
+</settings>

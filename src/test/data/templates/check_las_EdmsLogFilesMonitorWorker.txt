@@ -1,0 +1,9 @@
+INFO  2020-02-05 10:47:46,554 - IdentityServer.dll	edms#2	NALASP01	Login successfull	<null>	<null>	Information	05.02.2020 10:47:46	USR_LOGIN_SUCCESS	-1	 
+INFO  2020-02-05 10:47:46,554 - IdentityServer.dll	-1	NALASP01	Command NWA.Identity.Common.Command.Authentication.LoginWithCredentialISCmd, produced a result with statusId: 0 DETAILS: 			Information	05.02.2020 10:47:46	SRV_PROXY	0	 
+INFO  2020-02-05 10:47:46,554 - IdentityServer.dll	-1	NALASP01	Command NWA.Identity.Common.Command.Authentication.LoginWithCredentialISCmd, produced a result with statusId: 0 DETAILS: 			Information	05.02.2020 10:47:46	SRV_TUNNELED	0	 
+INFO  2020-02-05 10:47:46,569 - EDMS.dll	-1	NALASP01	Command NWA.EDMSCommon.Command.Common.CurrentEnvironmentSetCmd, produced a result with statusId: 1403 DETAILS: Not enough license or license is expired 			Exception	05.02.2020 10:47:46	SRV_CMDIMPL_ERROR	1403	 
+INFO  2020-02-05 10:47:46,585 - 05.02.2020 10:47:46	05.02.2020 10:47:46	2	NALASP01	05.02.2020 10:47:46	USR_LOGOUT_SESSION_TIME	-1	 
+INFO  2020-02-05 11:07:45,834 - <null>	-1	NALASP01	MemoryCache, key EDMSUserRightManager_Env_1_NASQLP01,65194.LAS_EBANKING removed because Expired	<null>	<null>	Information	05.02.2020 11:07:45	SRV_NONE	-1	 
+INFO  2020-02-05 11:07:45,834 - <null>	-1	NALASP01	Remaining keys: 	<null>	<null>	Information	05.02.2020 11:07:45	SRV_NONE	-1	 
+INFO  2020-02-05 11:21:02,891 - NwaServer	-1	NALASP01	NwaServer.BootStrapServer is invoking the initialization of server :EDMSSERVER.DLL			Information	05.02.2020 11:21:01	SRV_NONE	-1	 
+INFO  2020-02-05 11:21:02,891 - EDMSMetaManager	?	NALASP01	EDMSMetaManager is going to connect to databse using profile: *NASQLP01,65194.LASECUR*			Information	05.02.2020 11:21:01	SRV_NONE	-1	 

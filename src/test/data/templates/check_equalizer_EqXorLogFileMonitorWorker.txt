@@ -1,0 +1,9 @@
+14:10:12:t9348:Channel is not specified.
+14:10:12:t9348:mgr.SetName(LU01.XL1TEQLV1)
+14:10:12:t9348:Queue maximumMessageLength returned (ImqBoolean) 0, length = -2.
+%-ERR-14:10:12:t9348:_Cannot rely on the value returned by Queue maximumMessageLength function, using parameter "get_q buffer size" value instead.
+14:10:12:t9348:Buffer Clen: 8192.
+14:10:12:t9348:ImqQueue::open for input succeeded.
+14:10:17:t9348:no messages on queue.
+14:10:17:t9348:No orders to store.
+14:10:17:t9348:Total stored 0 orders, failed to store: 0.

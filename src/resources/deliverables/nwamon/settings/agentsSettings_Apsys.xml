@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings environment="bendura_prod"
+      useScheduler="true" 
+      defaultFrequenceMilliseconds="10000"
+      logToConsole="false" 
+      logToFile="true"  
+      logLevel="info" 
+      logFileCount="5" 
+      logFileSizeInBytes="200000000" 
+      logFile="log/agents.log"
+      dateFormat="yyyy-MM-dd_HH_mm_ss_SSS"
+      transferBin="bin"
+      useTransfer="true"
+      transferServer="localhost"
+      transferPort="22"
+      transferLogin="nfs_monitoring"
+      transferPassword="lzpwd">
+  <workers>
+<!--<workerInfos name="Batch file progress" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.common.FileProgressMonitorWorker</classname>
+      <product>apsys</product> 
+      <zTag>batch</zTag>
+      <additionalParameters>directories=../log;includes=test\.txt;idleTimeoutMinutes=5</additionalParameters>
+      <outputfile>output/BatchFileProgress_{date}.xml</outputfile>
+      <scheduling enabled="true">
+        <periodic frequence="10000" />
+      </scheduling>
+    </workerInfos>
+<workerInfos name="Oracle Services/Unix Cross check" disableTransfer="false">
+      <successExitCode>0</successExitCode>
+      <classname>workers.apsys.ServiceInstanceCheckWithOracle</classname>
+      <command>
+		SELECT i.instance_name,srv.cdsrvs,srv.nbsrvi
+		FROM   cdssct sct, cdssrv srv, v$instance i
+		WHERE  sct.idscts = srv.idscts
+		AND    i.instance_name = Trim(sct.idbases)
+	  </command>
+	  <subproduct>oracle_apsys_svcs</subproduct>
+      <additionalParameters>jdbcdriver|oracle.jdbc.driver.OracleDriver||jdbcurl|jdbc:oracle:thin:support/support@apsprod:1521:dbprod</additionalParameters>
+      <outputfile>output/OracleApsysServices.xml</outputfile>
+      <scheduling enabled="true">
+        <periodic frequence="600000" />
+      </scheduling>
+    </workerInfos>  
+  <workerInfos name="Apsys Log Files Error Monitor" disableTransfer="false">
+      <scheduling enabled="true"></scheduling>
+      <classname>workers.apsys.ErrorsMonitorWorker</classname>
+      <command></command>
+      <successExitCode>1</successExitCode>
+      <additionalParameters>directories=../log;newRunEvent=setnewrun;pidCheckAfterNewRun=prtsrv;excludes=.*emi.*</additionalParameters>
+      <outputfile>output/client_apsys_ErrorsMonitorResult_{date}.xml</outputfile>
+       <properties>
+          <property name="batsrv_PRE.*" value="return code 0" />
+        </properties>
+    </workerInfos>
+
+    <workerInfos name="Apsys GetOperationInfo" disableTransfer="false">
+      <scheduling enabled="true">
+        <periodic frequence="10000" />
+      </scheduling>
+      <classname>workers.apsys.GetOperationInfoWorker</classname>
+      <command>getoperationinfo</command>
+      <successExitCode>0</successExitCode>
+      <outputfile>output/client_apsys_GetOperationInfoWorker.xml</outputfile>
+    </workerInfos>
+
+    <workerInfos name="Apsys Transaction Error Monitor" disableTransfer="false">
+      <scheduling enabled="true">
+        <periodic frequence="10000" />
+      </scheduling>
+      <classname>workers.apsys.TransactionsMonitorWorker</classname>
+      <command>grep -n "Return code is 0" ../monitor/*</command>
+      <successExitCode>0</successExitCode>
+      <outputfile>output/client_apsys_TransactionsMonitorResult_{date}.xml</outputfile>
+    </workerInfos>
+
+    <workerInfos name="Solaris Resource Check" disableTransfer="false">
+      <product>apsys</product>
+      <scheduling enabled="true">
+        <periodic frequence="10000" />
+      </scheduling>
+      <classname>workers.common.ResourcesMonitorWorker</classname>
+      <command>
+        vmstat | tail -1 | awk '{print "USED="$5}' &amp;&amp;
+          expr `prtconf | grep Memory | cut -d " " -f 3` \* 1024 - `vmstat | tail -1 | cut -d " " -f 6` | awk '{print "TOTAL="$0}' &amp;&amp;
+          mpstat -a | tail -1 | awk '{print "CPU=USER:"$13,"SYS:"$14,"WAIT:"0,"IDLE:"$16}' &amp;&amp;
+          df -k | awk {'printf ("%-50s%-20s%-10s\n",$6,$4,$5)'}
+      </command>
+      <successExitCode>0</successExitCode>
+      <outputfile>output/client_apsys_ResourcesMonitorResult.xml</outputfile>
+    </workerInfos>
+
+    <workerInfos name="Apsys Services Monitor" disableTransfer="false">
+      <product>apsys</product>
+      <scheduling enabled="true">
+        <periodic frequence="10000" />
+      </scheduling>
+      <classname>workers.common.ProcessesMonitorWorker</classname>
+      <command>ps eax | awk '{print $5}'</command>
+      <successExitCode>0</successExitCode>
+      <additionalParameters>processes=dspsrv,devsrv,nfysrv,lstsrv,filsrv,jmssrv,fctsrv,fixsrv,jwssrv,dassrv,emisrv_igt,prtsrv,cinsrv,quesrv,arcsrv,persrv,bkosrv,fiisrv</additionalParameters>
+      <outputfile>output/client_apsys_ProcessesMonitorResult.xml</outputfile>
+    </workerInfos>
+
+    <workerInfos name="checkDBUsers" disableTransfer="false">
+      <product>apsys</product>
+      <classname>workers.common.DBCheckUsersWorker</classname>
+      <command>
+     	SELECT username, account_status, expiry_date FROM dba_users
+        WHERE account_status NOT IN ('OPEN','LOCKED') and oracle_maintained='N' and authentication_type = 'PASSWORD' 
+	AND username NOT IN ('BUSINESS')
+      </command> 
+      <additionalParameters>dburl|jdbc:oracle:thin:@localhost:1521:dbprod||dbuser|support||dbpwd|support</additionalParameters>
+      <outputfile>output/client_apsys_dbAccountCheck.xml</outputfile>
+      <scheduling enabled="true">
+        <periodic frequence="14400000" />
+      </scheduling>
+    </workerInfos>
+
+   <workerInfos name="Apsys ApsysWebApi" disableTransfer="false">
+      <scheduling enabled="true">
+        <periodic frequence="10000" />
+      </scheduling>
+      <classname>workers.apsys.ApsysWebApiWorker</classname>
+      <command>powershell -noprofile -command "Invoke-WebRequest -UseDefaultCredentials -Uri http://localhost:8080/api/apsys/state -Method POST -ContentType "application/json" |  ConvertFrom-Json | ConvertTo-Json"</command>
+      <successExitCode>0</successExitCode>
+      <outputfile>output/client_apsys_ApsysWebApiWorker.xml</outputfile>
+    </workerInfos>
+
+    <workerInfos name="Apsys WebApi" disableTransfer="false">
+      <scheduling enabled="true">
+        <periodic frequence="10000" />
+      </scheduling>
+      <classname>workers.apsys.WEBAPIWorker</classname>
+      <command>powershell -noprofile -command "Invoke-RestMethode -UseDefaultCredentials -Uri http://localhost:8585/api/apsys/state -Method POST -ContentType "application/json""</command>
+      <successExitCode>0</successExitCode>
+      <outputfile>output/client_apsys_ApsysWebApiWorker.xml</outputfile>
+    </workerInfos>
+    -->
+   
+   <!--  
+     <workerInfos name="Apsys BatchCheck" disableTransfer="false">
+      <product>apsys</product>
+      <subproduct>batch_check</subproduct>
+      <classname>workers.apsys.BatchCheckWorker</classname>
+      <scheduling enabled="true">
+      <days>
+      		<day name="MONDAY" time="15:10" />
+      		<day name="TUESDAY" time="15:50" />
+      		<day name="WEDNESDAY" time="08:00" />
+      		<day name="THURSDAY" time="13:26" />
+      		<day name="FRIDAY" time="08:00" />
+      </days>
+      </scheduling>
+      <properties>
+      		<property name="test.txt" value="/apsys/comps/" />
+      		<property name="test_emna2.txt" value="/apsys/comps/" />
+     
+      
+    </properties>
+    <outputfile>output/BatchCheck_{date}.xml</outputfile>
+    </workerInfos>
+  -->   
+  
+  
+  <!-- Batch Milestones -->
+  
+  <!--
+     <workerInfos name="Apsys BatchCheck Milestones" disableTransfer="false">
+      <product>apsys</product>
+      <subproduct>batch_check</subproduct>
+      <classname>workers.apsys.BatchCheckMilestones</classname>
+      <scheduling enabled="true">
+      <days>
+      		<day name="MONDAY" time="15:10" />
+      		<day name="TUESDAY" time="15:50" />
+      		<day name="WEDNESDAY" time="08:00" />
+      		<day name="THURSDAY" time="13:26" />
+      		<day name="FRIDAY" time="08:00" />
+      </days>
+      </scheduling>
+      
+      <additionalParameters>directory=/apsys/comps/</additionalParameters>
+      <properties>
+      		<property name="test.txt" />
+      		<property name="test_emna2.txt" />
+    
+      
+    </properties>
+    <outputfile>output/BatchCheck_{date}.xml</outputfile>
+    </workerInfos>
+      -->
+      <workerInfos name="IPLabel Zabbix Integration" disableTransfer="false">
+      <product>iplabel</product>
+      <subproduct>ipLablel_integration</subproduct>
+      <classname>workers.common.IPLabelIntegration</classname>
+      <scheduling enabled="true">
+        <periodic frequence="10000" />
+      </scheduling>
+      
+    <outputfile>output/IPLabelIntegration_{date}.xml</outputfile>
+    </workerInfos>
+      
+      
+  </workers>
+</settings> 

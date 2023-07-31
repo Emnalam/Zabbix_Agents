@@ -1,0 +1,2755 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2020-10-30T10:37:21Z</date>
+    <groups>
+        <group>
+            <name>NewAccess/Hosts</name>
+        </group>
+    </groups>
+    <hosts>
+        <host>
+            <host>127.0.0.1</host>
+            <name>Zabbix - all customers</name>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <items>
+                <item>
+                    <name>trap.all_customers</name>
+                    <type>TRAP</type>
+                    <key>trap.all_customers</key>
+                    <delay>0</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <allowed_hosts>127.0.0.1</allowed_hosts>
+                </item>
+                <item>
+                    <name>Daddy Effect</name>
+                    <type>EXTERNAL</type>
+                    <key>_minie_effect.sh['GLOBAL']</key>
+                    <delay>10s</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <interface_ref>if1</interface_ref>
+                </item>
+            </items>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>BankMed Production</host>
+            <name>BankMed Production</name>
+            <templates>
+                <template>
+                    <name>Template Client</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bam_prod</value>
+                </macro>
+            </macros>
+            <inventory>
+                <tag>client</tag>
+            </inventory>
+        </host>
+        <host>
+            <host>BankMed Production - Apsys</host>
+            <name>BankMed Production - Apsys</name>
+            <templates>
+                <template>
+                    <name>Template Apsys</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bam_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>BankMed Production - CIM</host>
+            <name>BankMed Production - CIM</name>
+            <templates>
+                <template>
+                    <name>Template CIM Product</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bam_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>BankMed Production - Ebanking</host>
+            <name>BankMed Production - Ebanking</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - Ebanking</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bam_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>BankMed Production - Equalizer</host>
+            <name>BankMed Production - Equalizer</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - Equalizer</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bam_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>BankMed Production - Integrator</host>
+            <name>BankMed Production - Integrator</name>
+            <templates>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+                <template>
+                    <name>Template Product Integrator</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bam_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>BankMed Production - Logical Access</host>
+            <name>BankMed Production - Logical Access</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - Logical Access</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bam_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>BankMed Production - PAO</host>
+            <name>BankMed Production - PAO</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - PAO</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bam_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>BankMed Production - SQL</host>
+            <name>BankMed Production - SQL</name>
+            <status>DISABLED</status>
+            <templates>
+                <template>
+                    <name>1. Template Product - SQL</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bam_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>BankMed Production - Transfer</host>
+            <name>BankMed Production - Transfer</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - Transfer</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bam_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura Production</host>
+            <name>Bendura Production</name>
+            <templates>
+                <template>
+                    <name>Template Client</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <items>
+                <item>
+                    <name>Minie Effect Reloaded</name>
+                    <type>EXTERNAL</type>
+                    <key>_minie_effect.sh[{$CUSTOMER}]</key>
+                    <delay>10s</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <status>DISABLED</status>
+                    <value_type>TEXT</value_type>
+                    <interface_ref>if1</interface_ref>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_prod</value>
+                </macro>
+            </macros>
+            <inventory>
+                <tag>client</tag>
+            </inventory>
+        </host>
+        <host>
+            <host>Bendura Production - Agents</host>
+            <name>Bendura Production - Agents</name>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <items>
+                <item>
+                    <name>Agent Errors Notification</name>
+                    <type>EXTERNAL</type>
+                    <key>common_error_notification.sh[{$CUSTOMER},&quot;agents&quot;,&quot;agenterror&quot;]</key>
+                    <delay>30s</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <interface_ref>if1</interface_ref>
+                    <request_method>POST</request_method>
+                    <triggers>
+                        <trigger>
+                            <expression>{regexp(PROBLEM)}&lt;&gt;0</expression>
+                            <name>Agent Errors</name>
+                            <priority>HIGH</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Agent Errors</name>
+                    <type>TRAP</type>
+                    <key>trap.agents_error</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <request_method>POST</request_method>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura Production - Apsys</host>
+            <name>Bendura Production - Apsys</name>
+            <templates>
+                <template>
+                    <name>Template Apsys</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura Production - Bankers Front</host>
+            <name>Bendura Production - Bankers Front</name>
+            <status>DISABLED</status>
+            <templates>
+                <template>
+                    <name>1. Template Product - Bankers Front</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura Production - CIM</host>
+            <name>Bendura Production - CIM</name>
+            <templates>
+                <template>
+                    <name>Template CIM Product</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura Production - Ebanking</host>
+            <name>Bendura Production - Ebanking</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - Ebanking</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <applications>
+                <application>
+                    <name>ebklogincheck</name>
+                </application>
+                <application>
+                    <name>ebkprodlogincheck</name>
+                </application>
+            </applications>
+            <httptests>
+                <httptest>
+                    <name>Ebanking Login Url</name>
+                    <application>
+                        <name>ebkprodlogincheck</name>
+                    </application>
+                    <steps>
+                        <step>
+                            <name>Login Page</name>
+                            <url>https://banking.bendura.li/</url>
+                        </step>
+                    </steps>
+                </httptest>
+            </httptests>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura Production - Equalizer</host>
+            <name>Bendura Production - Equalizer</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - Equalizer</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura Production - Integrator</host>
+            <name>Bendura Production - Integrator</name>
+            <templates>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+                <template>
+                    <name>Template Product Integrator</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura Production - Logical Access</host>
+            <name>Bendura Production - Logical Access</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - Logical Access</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura Production - PAO</host>
+            <name>Bendura Production - PAO</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - PAO</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura Production - SQL</host>
+            <name>Bendura Production - SQL</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - SQL</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_prod</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura UAT</host>
+            <name>Bendura UAT</name>
+            <templates>
+                <template>
+                    <name>Template Client</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <items>
+                <item>
+                    <name>Minie Effect Reloaded</name>
+                    <type>EXTERNAL</type>
+                    <key>_minie_effect.sh[{$CUSTOMER}]</key>
+                    <delay>10s</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <interface_ref>if1</interface_ref>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_uat</value>
+                </macro>
+            </macros>
+            <inventory>
+                <tag>client</tag>
+            </inventory>
+        </host>
+        <host>
+            <host>Bendura UAT - Agents</host>
+            <name>Bendura UAT - Agents</name>
+            <status>DISABLED</status>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <items>
+                <item>
+                    <name>Agent Errors Notification</name>
+                    <type>EXTERNAL</type>
+                    <key>common_error_notification.sh[{$CUSTOMER},&quot;agents&quot;,&quot;agenterror&quot;]</key>
+                    <delay>30s</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <interface_ref>if1</interface_ref>
+                    <request_method>POST</request_method>
+                    <triggers>
+                        <trigger>
+                            <expression>{regexp(PROBLEM)}&lt;&gt;0</expression>
+                            <name>Agent Errors</name>
+                            <priority>HIGH</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Agent Errors</name>
+                    <type>TRAP</type>
+                    <key>trap.agents_error</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <request_method>POST</request_method>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_uat</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura UAT - Apsys</host>
+            <name>Bendura UAT - Apsys</name>
+            <templates>
+                <template>
+                    <name>Template Apsys</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_uat</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura UAT - CIM</host>
+            <name>Bendura UAT - CIM</name>
+            <templates>
+                <template>
+                    <name>Template CIM Product</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_uat</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura UAT - Ebanking</host>
+            <name>Bendura UAT - Ebanking</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - Ebanking</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_uat</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura UAT - Equalizer</host>
+            <name>Bendura UAT - Equalizer</name>
+            <status>DISABLED</status>
+            <templates>
+                <template>
+                    <name>1. Template Product - Equalizer</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_uat</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura UAT - Integrator</host>
+            <name>Bendura UAT - Integrator</name>
+            <status>DISABLED</status>
+            <templates>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+                <template>
+                    <name>Template Product Integrator</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_uat</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura UAT - Logical Access</host>
+            <name>Bendura UAT - Logical Access</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - Logical Access</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_uat</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura UAT - PAO</host>
+            <name>Bendura UAT - PAO</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - PAO</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_uat</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Bendura UAT - SQL</host>
+            <name>Bendura UAT - SQL</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - SQL</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>bendura_uat</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>CIM Banque</host>
+            <name>CIM Banque</name>
+            <templates>
+                <template>
+                    <name>Template Client</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>cim-banque</value>
+                </macro>
+            </macros>
+            <inventory>
+                <tag>client</tag>
+            </inventory>
+        </host>
+        <host>
+            <host>CIM Banque - Apsys</host>
+            <name>CIM Banque - Apsys</name>
+            <templates>
+                <template>
+                    <name>Template Apsys</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>cim-banque</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>CIM Banque - PAO</host>
+            <name>CIM Banque - PAO</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - PAO</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>cim-banque</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>CIM Banque - SQL</host>
+            <name>CIM Banque - SQL</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - SQL</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>cim-banque</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Hottinger-AG</host>
+            <name>Hottinger-AG</name>
+            <templates>
+                <template>
+                    <name>Template Client</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <items>
+                <item>
+                    <name>Minie Effect Reloaded</name>
+                    <type>EXTERNAL</type>
+                    <key>_minie_effect.sh[{$CUSTOMER}]</key>
+                    <delay>10s</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <interface_ref>if1</interface_ref>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>hottinger-ag</value>
+                </macro>
+            </macros>
+            <inventory>
+                <tag>client</tag>
+            </inventory>
+        </host>
+        <host>
+            <host>Hottinger-AG - Apsys</host>
+            <name>Hottinger-AG - Apsys</name>
+            <templates>
+                <template>
+                    <name>Template Apsys</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>hottinger-ag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Hottinger-AG - CIM</host>
+            <name>Hottinger-AG - CIM</name>
+            <templates>
+                <template>
+                    <name>Template CIM Product</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>hottinger-ag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Hottinger-AG - CIM Database Server</host>
+            <name>Hottinger-AG - CIM Database Server</name>
+            <status>DISABLED</status>
+            <templates>
+                <template>
+                    <name>1. Template Product - SQL</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <items>
+                <item>
+                    <name>ImportantLogs</name>
+                    <type>DEPENDENT</type>
+                    <key>important_logs</key>
+                    <delay>0</delay>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <master_item>
+                        <key>trap.apsys_error</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>trap.RawErrorMonitor</name>
+                    <type>TRAP</type>
+                    <key>trap.apsys_error</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+                <item>
+                    <name>trap.GetOperationInfo</name>
+                    <type>TRAP</type>
+                    <key>trap.apsys_operation</key>
+                    <delay>0</delay>
+                    <history>30d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+                <item>
+                    <name>trap.TransactionErrorMonitor</name>
+                    <type>TRAP</type>
+                    <key>trap.apsys_transaction</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+                <item>
+                    <name>trap.file_progress_batch</name>
+                    <type>TRAP</type>
+                    <key>trap.file_progress_batch</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+                <item>
+                    <name>trap.file_progress_batch_alert</name>
+                    <type>TRAP</type>
+                    <key>trap.file_progress_batch_alert</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+                <item>
+                    <name>trap.sql_check_oracle_apsys_svcs</name>
+                    <type>TRAP</type>
+                    <key>trap.sql_check_oracle_apsys_svcs</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <triggers>
+                        <trigger>
+                            <expression>{regexp(delta1=[1-9][0-9]|[5-9])}&lt;&gt;0</expression>
+                            <name>Oracle - Apsys Services problem detected</name>
+                            <priority>INFO</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>hottinger-ag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Hottinger-AG - PAO</host>
+            <name>Hottinger-AG - PAO</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - PAO</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>hottinger-ag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Hottinger-AG - SQL</host>
+            <name>Hottinger-AG - SQL</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - SQL</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>hottinger-ag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Hottinger-AG - Transfer</host>
+            <name>Hottinger-AG - Transfer</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - Transfer</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>hottinger-ag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Mason-PBLAG</host>
+            <name>Mason-PBLAG</name>
+            <templates>
+                <template>
+                    <name>Template Client</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <items>
+                <item>
+                    <name>Minie Effect Reloaded</name>
+                    <type>EXTERNAL</type>
+                    <key>_minie_effect.sh[{$CUSTOMER}]</key>
+                    <delay>10s</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <interface_ref>if1</interface_ref>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>mason-pblag</value>
+                </macro>
+            </macros>
+            <inventory>
+                <tag>client</tag>
+            </inventory>
+        </host>
+        <host>
+            <host>Mason-PBLAG - Apsys</host>
+            <name>Mason-PBLAG - Apsys</name>
+            <templates>
+                <template>
+                    <name>Template Apsys</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>mason-pblag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Mason-PBLAG - CIM</host>
+            <name>Mason-PBLAG - CIM</name>
+            <templates>
+                <template>
+                    <name>Template CIM Product</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>mason-pblag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Mason-PBLAG - Ebanking</host>
+            <name>Mason-PBLAG - Ebanking</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - Ebanking</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <applications>
+                <application>
+                    <name>ebklogincheck</name>
+                </application>
+                <application>
+                    <name>ebkprodlogincheck</name>
+                </application>
+            </applications>
+            <httptests>
+                <httptest>
+                    <name>Ebanking Login Url</name>
+                    <application>
+                        <name>ebkprodlogincheck</name>
+                    </application>
+                    <steps>
+                        <step>
+                            <name>Login Page</name>
+                            <url>https://banking.bendura.li/</url>
+                        </step>
+                    </steps>
+                </httptest>
+            </httptests>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>mason-pblag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Mason-PBLAG - Equalizer</host>
+            <name>Mason-PBLAG - Equalizer</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - Equalizer</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>mason-pblag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Mason-PBLAG - Integrator</host>
+            <name>Mason-PBLAG - Integrator</name>
+            <templates>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+                <template>
+                    <name>Template Product Integrator</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>mason-pblag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Mason-PBLAG - Logical Access</host>
+            <name>Mason-PBLAG - Logical Access</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - Logical Access</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>mason-pblag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Mason-PBLAG - PAO</host>
+            <name>Mason-PBLAG - PAO</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - PAO</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>mason-pblag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Mason-PBLAG - SQL</host>
+            <name>Mason-PBLAG - SQL</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - SQL</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>mason-pblag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Oddo-Bhf</host>
+            <name>Oddo-Bhf</name>
+            <templates>
+                <template>
+                    <name>Template Client</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <items>
+                <item>
+                    <name>Minie Effect Reloaded</name>
+                    <type>EXTERNAL</type>
+                    <key>_minie_effect.sh[{$CUSTOMER}]</key>
+                    <delay>10s</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <interface_ref>if1</interface_ref>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>oddo-bhf</value>
+                </macro>
+            </macros>
+            <inventory>
+                <tag>client</tag>
+            </inventory>
+        </host>
+        <host>
+            <host>Oddo-Bhf - Apsys</host>
+            <name>Oddo-Bhf - Apsys</name>
+            <templates>
+                <template>
+                    <name>Template Apsys</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>oddo-bhf</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Oddo-Bhf - CIM</host>
+            <name>Oddo-Bhf - CIM</name>
+            <templates>
+                <template>
+                    <name>Template CIM Product</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>oddo-bhf</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Oddo-Bhf - PAO</host>
+            <name>Oddo-Bhf - PAO</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - PAO</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>oddo-bhf</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Oddo-Bhf - SQL</host>
+            <name>Oddo-Bhf - SQL</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - SQL</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>oddo-bhf</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Oddo-Bhf - Transfer</host>
+            <name>Oddo-Bhf - Transfer</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - Transfer</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>oddo-bhf</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Tellco-AG</host>
+            <name>Tellco-AG</name>
+            <templates>
+                <template>
+                    <name>Template Client</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <items>
+                <item>
+                    <name>Minie Effect Reloaded</name>
+                    <type>EXTERNAL</type>
+                    <key>_minie_effect.sh[{$CUSTOMER}]</key>
+                    <delay>10s</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <interface_ref>if1</interface_ref>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>tellco-ag</value>
+                </macro>
+            </macros>
+            <inventory>
+                <tag>client</tag>
+            </inventory>
+        </host>
+        <host>
+            <host>Tellco-AG - Apsys</host>
+            <name>Tellco-AG - Apsys</name>
+            <templates>
+                <template>
+                    <name>Template Apsys</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>tellco-ag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Tellco-AG - PAO</host>
+            <name>Tellco-AG - PAO</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - PAO</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>tellco-ag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Tellco-AG - SQL</host>
+            <name>Tellco-AG - SQL</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - SQL</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>tellco-ag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Tellco-AG - Transfer</host>
+            <name>Tellco-AG - Transfer</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - Transfer</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <items>
+                <item>
+                    <name>trap.sql_check_backups</name>
+                    <type>TRAP</type>
+                    <key>trap.sql_check_backups</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <triggers>
+                        <trigger>
+                            <expression>{regexp(Status:NOK)}&lt;&gt;0</expression>
+                            <name>SQL Server Backups problem detected</name>
+                            <priority>INFO</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>trap.sql_check_branch_indexes</name>
+                    <type>TRAP</type>
+                    <key>trap.sql_check_branch_indexes</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+                <item>
+                    <name>trap.sql_check_ebanking_indexes</name>
+                    <type>TRAP</type>
+                    <key>trap.sql_check_ebanking_indexes</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+                <item>
+                    <name>trap.sql_check_indexes</name>
+                    <type>TRAP</type>
+                    <key>trap.sql_check_indexes</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <triggers>
+                        <trigger>
+                            <expression>{regexp(Status:NOK)}&lt;&gt;0</expression>
+                            <name>SQL Server Indexes problem detected</name>
+                            <priority>INFO</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>trap.sql_check_las_indexes</name>
+                    <type>TRAP</type>
+                    <key>trap.sql_check_las_indexes</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+                <item>
+                    <name>trap.sql_check_logs</name>
+                    <type>TRAP</type>
+                    <key>trap.sql_check_logs</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <triggers>
+                        <trigger>
+                            <expression>{regexp(Status:NOK)}&lt;&gt;0</expression>
+                            <name>SQL Server Server Logs problem detected</name>
+                            <priority>INFO</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>trap.sql_check_oracle_apsys_backups</name>
+                    <type>TRAP</type>
+                    <key>trap.sql_check_oracle_apsys_backups</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <triggers>
+                        <trigger>
+                            <expression>{regexp(Status:NOK)}&lt;&gt;0</expression>
+                            <name>Oracle - Apsys Backups problem detected</name>
+                            <priority>INFO</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>trap.sql_check_oracle_apsys_logs</name>
+                    <type>TRAP</type>
+                    <key>trap.sql_check_oracle_apsys_logs</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <triggers>
+                        <trigger>
+                            <expression>{regexp(Status:NOK)}&lt;&gt;0</expression>
+                            <name>Oracle - Apsys Logs problem detected</name>
+                            <priority>INFO</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>trap.sql_check_oracle_cim_backups</name>
+                    <type>TRAP</type>
+                    <key>trap.sql_check_oracle_cim_backups</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <triggers>
+                        <trigger>
+                            <expression>{regexp(Status:NOK)}&lt;&gt;0</expression>
+                            <name>Oracle - CIM Backups problem detected</name>
+                            <priority>INFO</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>trap.sql_check_oracle_cim_logs</name>
+                    <type>TRAP</type>
+                    <key>trap.sql_check_oracle_cim_logs</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <triggers>
+                        <trigger>
+                            <expression>{regexp(Status:NOK)}&lt;&gt;0</expression>
+                            <name>Oracle - CIM Logs problem detected</name>
+                            <priority>INFO</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>trap.sql_check_oracle_cim_svcs</name>
+                    <type>TRAP</type>
+                    <key>trap.sql_check_oracle_cim_svcs</key>
+                    <delay>0</delay>
+                    <history>5d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>tellco-ag</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Waverton-dbjohprd</host>
+            <name>Waverton-dbjohprd</name>
+            <templates>
+                <template>
+                    <name>Template Client</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <items>
+                <item>
+                    <name>Minie Effect Reloaded</name>
+                    <type>EXTERNAL</type>
+                    <key>_minie_effect.sh[{$CUSTOMER}]</key>
+                    <delay>10s</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <interface_ref>if1</interface_ref>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>waverton-dbjohprd</value>
+                </macro>
+            </macros>
+            <inventory>
+                <tag>client</tag>
+            </inventory>
+        </host>
+        <host>
+            <host>Waverton-dbjohprd - Apsys</host>
+            <name>Waverton-dbjohprd - Apsys</name>
+            <templates>
+                <template>
+                    <name>Template Apsys</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>waverton-dbjohprd</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Waverton-dbjohprd - PAO</host>
+            <name>Waverton-dbjohprd - PAO</name>
+            <status>DISABLED</status>
+            <templates>
+                <template>
+                    <name>1. Template Product - PAO</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>waverton-dbjohprd</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Waverton-dbjohprd - SQL</host>
+            <name>Waverton-dbjohprd - SQL</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - SQL</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>waverton-dbjohprd</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Waverton-johprd</host>
+            <name>Waverton-johprd</name>
+            <templates>
+                <template>
+                    <name>Template Client</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <items>
+                <item>
+                    <name>Minie Effect Reloaded</name>
+                    <type>EXTERNAL</type>
+                    <key>_minie_effect.sh[{$CUSTOMER}]</key>
+                    <delay>10s</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <interface_ref>if1</interface_ref>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>waverton-johprd</value>
+                </macro>
+            </macros>
+            <inventory>
+                <tag>client</tag>
+            </inventory>
+        </host>
+        <host>
+            <host>Waverton-johprd - Apsys</host>
+            <name>Waverton-johprd - Apsys</name>
+            <templates>
+                <template>
+                    <name>Template Apsys</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>waverton-johprd</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Waverton-johprd - PAO</host>
+            <name>Waverton-johprd - PAO</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - PAO</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>waverton-johprd</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Waverton-johprd - SQL</host>
+            <name>Waverton-johprd - SQL</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - SQL</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>waverton-johprd</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>Waverton-johprd - Transfer</host>
+            <name>Waverton-johprd - Transfer</name>
+            <templates>
+                <template>
+                    <name>1. Template Product - Transfer</name>
+                </template>
+                <template>
+                    <name>Template Client</name>
+                </template>
+                <template>
+                    <name>Template Product</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <macros>
+                <macro>
+                    <macro>{$CUSTOMER}</macro>
+                    <value>waverton-johprd</value>
+                </macro>
+            </macros>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+        <host>
+            <host>_test_rabih</host>
+            <name>_test_rabih</name>
+            <groups>
+                <group>
+                    <name>NewAccess/Hosts</name>
+                </group>
+            </groups>
+            <interfaces>
+                <interface>
+                    <interface_ref>if1</interface_ref>
+                </interface>
+            </interfaces>
+            <items>
+                <item>
+                    <name>test_rabih</name>
+                    <type>TRAP</type>
+                    <key>test_rabih</key>
+                    <delay>0</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <triggers>
+                        <trigger>
+                            <expression>{regexp(test)}&lt;&gt;0</expression>
+                            <name>event {ITEM.VALUE1}</name>
+                            <priority>INFO</priority>
+                            <manual_close>YES</manual_close>
+                            <tags>
+                                <tag>
+                                    <tag>Name</tag>
+                                    <value>{ITEM.VALUE1}</value>
+                                </tag>
+                            </tags>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+            <inventory_mode>DISABLED</inventory_mode>
+        </host>
+    </hosts>
+    <triggers>
+        <trigger>
+            <expression>{Bendura Production - Ebanking:web.test.rspcode[Ebanking Login Url,Login Page].last()}&lt;&gt;200</expression>
+            <name>Ebanking production login page is not accessible</name>
+            <priority>HIGH</priority>
+            <manual_close>YES</manual_close>
+        </trigger>
+        <trigger>
+            <expression>{Mason-PBLAG - Ebanking:web.test.rspcode[Ebanking Login Url,Login Page].last()}&lt;&gt;200</expression>
+            <name>Ebanking production login page is not accessible</name>
+            <priority>HIGH</priority>
+            <manual_close>YES</manual_close>
+        </trigger>
+    </triggers>
+</zabbix_export>
