@@ -192,9 +192,9 @@
     </workerInfos>
       -->
       <workerInfos name="IPLabel Zabbix Integration" disableTransfer="false">
-      <product>iplabel</product>
+      <product>apsys</product>
       <subproduct>ipLablel_integration</subproduct>
-      <classname>workers.common.IPLabelIntegration</classname>
+      <classname>workers.apsys.IPLabel</classname>
       <scheduling enabled="true">
         <periodic frequence="10000" />
       </scheduling>

@@ -128,6 +128,7 @@ C:\Nma_dev_code\svn\nma\MonitoringAgents\src\main\java\DailyRunnerDaemon.java
 C:\Nma_dev_code\svn\nma\MonitoringAgents\src\main\java\workers\apsys\WEBAPIWorker.java
 C:\Nma_dev_code\svn\nma\MonitoringAgents\src\main\java\data\common\DiskCheckResult.java
 C:\Nma_dev_code\svn\nma\MonitoringAgents\src\main\java\data\apsys\ApsysResult.java
+C:\Nma_dev_code\svn\nma\MonitoringAgents\src\main\java\data\common\IPLabelGlobalData.java
 C:\Nma_dev_code\svn\nma\MonitoringAgents\src\main\java\data\common\LogFilesMonitorResult.java
 C:\Nma_dev_code\svn\nma\MonitoringAgents\src\main\java\data\common\SqlQueryMonitorResult.java
 C:\Nma_dev_code\svn\nma\MonitoringAgents\src\main\java\workers\morning\apsys\ApsysMorningWorker.java
@@ -147,6 +148,7 @@ C:\Nma_dev_code\svn\nma\MonitoringAgents\src\main\java\data\common\Result.java
 C:\Nma_dev_code\svn\nma\MonitoringAgents\src\main\java\data\apsys\DatabaseOperationalStatusResult.java
 C:\Nma_dev_code\svn\nma\MonitoringAgents\src\main\java\workers\equalizer\EqconvLogFileMonitorWorker.java
 C:\Nma_dev_code\svn\nma\MonitoringAgents\src\main\java\utils\FileUtils.java
+C:\Nma_dev_code\svn\nma\MonitoringAgents\src\main\java\workers\apsys\IPLabel.java
 C:\Nma_dev_code\svn\nma\MonitoringAgents\src\main\java\workers\morning\apsys\validators\CheckSavesBackupValidator.java
 C:\Nma_dev_code\svn\nma\MonitoringAgents\src\main\java\workers\morning\apsys\CheckBatchLog.java
 C:\Nma_dev_code\svn\nma\MonitoringAgents\src\main\java\workers\morning\MorningReport.java

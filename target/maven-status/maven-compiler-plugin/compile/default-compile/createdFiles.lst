@@ -27,6 +27,7 @@ workers\common\CheckCertificateExpiryWorker.class
 config\morning\Configuration.class
 data\apsys\CheckBatchLogResult.class
 utils\FileUtils$1.class
+data\common\IPLabelGlobalData.class
 data\apsys\RunConfigurationResult.class
 Starter$1.class
 workers\common\SqlQueryMonitorWorker.class
@@ -95,6 +96,7 @@ workers\apsys\WEBAPIWorker.class
 workers\common\GenericLogFilesMonitorWorker.class
 workers\common\LogFilesMonitorWorker$1.class
 workers\common\CheckUrlAvailabilityWorker$2.class
+workers\apsys\IPLabel.class
 workers\morning\apsys\CheckSavesBackup.class
 workers\cim\CIMProcessManagerMonitorWorker.class
 data\apsys\TransactionErrors.class
